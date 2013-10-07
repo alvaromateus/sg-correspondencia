@@ -6,29 +6,28 @@
 </head>
 <body>
 	<?php
-	$conn = mysql_connect("localhost","root","") or die ("Você não está logado no MYSQL!!");
-	mysql_select_db("sem4",$conn) or die ("A conexão com o Banco de Dados não foi efeuada!");
-	if($_POST['Consultar'] == "GERAR")
+        $user='fernando';
+        $senha='123';
+        $banco='XE'; 
+        $conexao =  oci_connect($user, $senha, $banco);
+        if (!$conexao)
+        {
+            echo "Erro na conexão com o Oracle.";
+        }
+        else
 	{
-		$login = $_POST['txtusuario'];
-		$senha = $_POST['txtsenha'];
-		$SQL = "SELECT * FROM tb_usuario WHERE login = '$login'";
-		$connect = mysql_query($SQL,$conn);
-		while($consulta = mysql_fetch_array($connect))
-		{
-			if($consulta['login'] == $login && $consulta['senha'] == $senha)
-			{
-			   	printf("<h3>Olá " . $consulta['nome'] . "</h3></br>");
-				printf("<h3>Seu usuário é " . $consulta['login'] . "</h3></br>");
-				printf("<h3>Sua senha é " . $consulta['senha'] . "</h3>");
-				exit;
-			}
-			else
-			{
-				echo "Login e / ou Senha inválidos.";
-			}
-		}    
+            echo "Conexão bem sucedida.";
 	}
-?>
+	$stmt = oci_parse($conexao, "SELECT * FROM USUARIO") or die ("A conexão com o Banco de Dados não foi efeuada!");
+	oci_execute($stmt, OCI_DEFAULT);
+        while($row = oci_fetch_array($stmt))
+        {
+            echo("<h3>Olá " . $row[0] . "</h3></br>");
+            echo("<h3>Seu registro é " . $row[1] . "</h3></br>");
+            echo("<h3>Sua senha é " . $row[2] . "</h3></br>");
+            echo("<h3>Nível de acesso " . $row[3] . "</h3>");
+            exit;
+        }
+        ?>
 </body>
 </html>
