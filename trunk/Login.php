@@ -9,7 +9,7 @@
         <div class="topo">
             .: Sistema de Gerenciamento de Correspondência - SGC :.
         </div>
-        <form method="post" action="">
+        <form method="post" action="ConsultarUsuario.php">
             <input type="hidden" name="Consultar" value="">
             <div class="logar">
                 <label class="lb">Usuário:</label>
