@@ -5,29 +5,34 @@
     <title>.: Consultar Usuário :.</title>
 </head>
 <body>
-	<?php
-        $user='fernando';
-        $senha='123';
-        $banco='XE'; 
-        $conexao =  oci_connect($user, $senha, $banco);
-        if (!$conexao)
+    <?php
+        require 'Conexao.php';
+        if($_SESSION['Conexao'] == 'Sim')
         {
-            echo "Erro na conexão com o Oracle.";
+            if($_POST['Consultar'] == "GERAR")
+            {
+                $usuario = $_POST['txtusuario'];
+                $acesso = $_POST['txtsenha'];
+                $stmt = oci_parse($conexao, "SELECT u.nm_usuario, u.nm_senha, f.nm_funcionario FROM Usuario u, Funcionario f WHERE nm_senha = $acesso AND u.cd_registro = f.cd_registro");
+                oci_execute($stmt, OCI_DEFAULT);
+                while($row = oci_fetch_array($stmt))
+                {
+                    if($row[0] == $usuario && $row[1] == $acesso)
+                    {
+                        echo("<h3>Olá " . $row[2] . "</h3></br>");
+                        exit;
+                    }
+                    else
+                    {
+                        echo "Login e / ou Senha inválidos.";
+                    }
+                }    
+            }
         }
         else
-	{
-            echo "Conexão bem sucedida.";
-	}
-	$stmt = oci_parse($conexao, "SELECT * FROM USUARIO") or die ("A conexão com o Banco de Dados não foi efeuada!");
-	oci_execute($stmt, OCI_DEFAULT);
-        while($row = oci_fetch_array($stmt))
         {
-            echo("<h3>Olá " . $row[0] . "</h3></br>");
-            echo("<h3>Seu registro é " . $row[1] . "</h3></br>");
-            echo("<h3>Sua senha é " . $row[2] . "</h3></br>");
-            echo("<h3>Nível de acesso " . $row[3] . "</h3>");
-            exit;
+            echo "Não foi possível conectar ao banco de dados, tente novamente mais tarde.";
         }
-        ?>
+    ?>
 </body>
 </html>
