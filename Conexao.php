@@ -1,7 +1,14 @@
 <?php
-$db = " (DESCRIPTION = 
-    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
-(CONNECT_DATA = (SID = *seu_sid_aqui*))
-)";
-$conn = OCILogon("seu_user","sua_senha", $db);
+    $user='fernando';
+    $senha='123';
+    $banco='XE';
+    $conexao = oci_connect($user, $senha, $banco);
+    if (!$conexao)
+    {
+        $_SESSION['Conexao'] = 'Nao';
+    }
+    else
+    {
+        $_SESSION['Conexao'] = 'Sim';
+    }
 ?>

@@ -7,7 +7,9 @@
     </head>
     <body>
         <div class="topo">
-            .: Sistema de Gerenciamento de Correspondência - SGC :.
+            Sistema de Gerenciamento de Correspondência
+            <br/>
+            SGC
         </div>
         <form method="post" action="ConsultarUsuario.php">
             <input type="hidden" name="Consultar" value="">
@@ -15,9 +17,10 @@
                 <label class="lb">Usuário:</label>
                 <input type="text" name="txtusuario" class="txt" title="Digite o nome de usuário."/>
                 <label class="lb">Senha:</label>
-                <input type="password" name="txtsenha" class="txt" title="Digite a senha de acesso."/>
-                <input type="submit" value="Entrar" name="btentrar" onClick="Consultar.value='GERAR';" class="bt">
+                <input type="password" name="txtsenha" class="txt" title="Digite a senha."/>
+                <input type="submit" value="Entrar" name="btentrar" class="bt" title="Clique para entrar." onClick="Consultar.value='GERAR';"/>
             </div>
         </form>
     </body>
 </html>
+
