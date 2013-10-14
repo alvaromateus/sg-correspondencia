@@ -20,6 +20,8 @@
                     if($row[0] == $usuario && $row[1] == $acesso)
                     {
                         echo("<h3>Olá " . $row[2] . "</h3></br>");
+                        $_SESSION['Usuario'] = $usuario;
+                        $_SESSION['Senha'] = $acesso;
                         exit;
                     }
                     else
