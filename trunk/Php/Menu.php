@@ -17,13 +17,13 @@
             <li><a href="#">Consultar</a>
             <ul>
                 <li><a href="#">Funcionário</a></li>
-	        <li><a href="#">Correspondênca</a></li>
+	        <li><a href="#">Correspondência</a></li>
 	        <li><a href="#">Malote</a></li>                    
 	    </ul>
             <li><a href="#">Opções</a>
             <ul>
                 <li><a href="#">Cadastro</a></li>
-	        <li><a href="#">Usuário</a></li>
+	        <li><a href="#">Login / Senha</a></li>
 	    </ul>
             <li><a href="#">Sobre</a>
         </ul>
