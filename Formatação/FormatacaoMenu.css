@@ -11,14 +11,13 @@ font-size: 12px;
 .Menu
 {
     list-style:none; 
-    border:1px solid #c0c0c0; 
     float:left; 
 }
 .Menu li
 {
     position:relative; 
     float:left; 
-    border-right:1px solid #c0c0c0; 
+    padding:10px 10px; 
 }
 .Menu li a
 {
@@ -38,7 +37,7 @@ font-size: 12px;
 .Menu li ul
 {
     position:absolute; 
-    top:25px; 
+    top:35px; 
     left:0; 
     background-color:#fff; 
     display:none;
@@ -49,7 +48,6 @@ font-size: 12px;
 }
 .Menu li ul li
 {
-    border:1px solid #c0c0c0; 
     display:block; 
     width:150px;
 }
