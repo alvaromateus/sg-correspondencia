@@ -20,8 +20,8 @@
                     if($row[0] == $usuario && $row[1] == $acesso)
                     {
                         session_start();
-                        $_SESSION['Usuario'] = $usuario;
-                        $_SESSION['Senha'] = $acesso;
+                        $_SESSION['Usuario'] = $row[0];
+                        $_SESSION['Senha'] = $row[1];
                         $_SESSION['Nivel'] = $row[2];
                         $_SESSION['Nome'] = $row[3];
                         header('Location: /SGC/trunk/Php/Home.php');
