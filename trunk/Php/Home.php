@@ -9,7 +9,8 @@
         <div id="Principal">
             <div id="Login">
                 <?php
-                    require 'ConsultaUsuario.php';
+                    session_start();
+                    echo $_SESSION['Nome'];
                 ?>
             </div>
             <div id="Menu">
