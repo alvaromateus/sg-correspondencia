@@ -10,7 +10,14 @@
             <li><a href="#">Home</a>
             <li><a href="#">Cadastrar</a>
             <ul>
-                <li><a href="#">Funcionário</a></li>
+                <?php
+                    if($_SESSION['Nivel'] == 0)
+                    {
+                        ?>
+                        <li><a href="#">Funcionário</a></li>
+                        <?php
+                    }
+                ?>
 	        <li><a href="#">Correspondência</a></li>
 	        <li><a href="#">Malote</a></li>                    
 	    </ul>
