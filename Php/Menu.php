@@ -27,7 +27,7 @@
 	        <li><a href="#">Correspondência</a></li>
 	        <li><a href="#">Malote</a></li>                    
 	    </ul>
-            <li><a href="#">Opções</a>
+            <li><a href="#">Alterar</a>
             <ul>
                 <li><a href="#">Cadastro</a></li>
 	        <li><a href="#">Login / Senha</a></li>
