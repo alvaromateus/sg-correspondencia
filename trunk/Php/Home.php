@@ -9,8 +9,7 @@
         <div id="Principal">
             <div id="Login">
                 <?php
-                    session_start();
-                    echo $_SESSION['Nome'];
+                    require 'Logado.php';
                 ?>
             </div>
             <div id="Menu">
