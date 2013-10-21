@@ -1,0 +1,83 @@
+body
+{
+    margin:0;
+    padding:0;
+    background:#FFFFFF;
+}
+#Principal
+{
+    width: 1000px;
+    margin:0 auto;         
+    text-align:left; /* "remédio" para o hack do IE */ 
+}
+#Login
+{
+    padding: 5px;
+    background-color:#FFFFFF;
+    text-align: right;
+    margin-top: auto;
+}
+#Menu
+{
+    padding: 5px;
+    background-color:#FFFFFF;
+    margin-top: auto;
+    margin-left: 12%;
+}
+.topo/*Topo.*/
+{
+    width:100%;
+    height:50px;
+    margin-top: 10%;
+    padding: 5px;
+    background-color:transparent;
+    text-align:center;
+    font-family:"Times New Roman", Times, serif;
+    font-size:30px;
+    font-weight:bold;
+    color:#000;
+}
+.logar/*Alinhamento conteúdo*/
+{
+    width:36%;
+    float:left;
+    margin-left:31.5%;
+    padding: 5px;
+}
+.lb/*Label*/
+{
+    font-family:Calibri, Arial, Sans-Serif;
+    font-size:22px; 
+    text-align:right;
+    width:100px;
+    float:left;
+    margin-top: 3px;
+}
+.txt/*Caixa de texto*/
+{
+    width:250px;
+    float:right;
+    font-family:Calibri, Arial, Sans-Serif;
+    font-size:22px;
+ }
+.bt/*Botão*/
+{
+    float:left;
+    margin-left:135px;
+    background:#FFFFFF; 
+    padding:5px 8px 5px 8px; 
+    color:#000; 
+    font-family:Calibri, Arial, Sans-Serif; 
+    font-size:22px; 
+    letter-spacing:-1px; 
+    border:1px solid #aaa; 
+    text-decoration:none;
+}
+h6
+{
+    font-family: arial, helvetica, sans-serif;
+    font-size: 20px;
+}
+
+
+
