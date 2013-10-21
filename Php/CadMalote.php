@@ -17,7 +17,22 @@
                     require 'Menu.php';
                 ?>
             </div>
-            <div class="topo">
+            <?php
+            if ($_GET['Malote'] == 1)
+            {
+            ?>
+                <div class="topo">
+                    Malote efetuado com sucesso!
+                </div>
+                <div class="logar">
+                    <a onclick="" class="bt" href="CadMalote.php?Malote=0" title="Novo Cadastro de Malote.">Novo</a>
+                </div>
+            <?php
+            }
+            else
+            {
+            ?>
+                <div class="topo">
                     Cadastro de Novo Malote
                 </div>
                 <form method="post" action="Insercao.php">
@@ -41,9 +56,14 @@
                     <input type="text" name="txtorigem" class="txt" title="Digite o origem."/>
                     <label class="lb">Destino:</label>
                     <input type="text" name="txtdestino" class="txt" title="Digite o destino."/>
+                    <label class="lb">Quant.:</label>
+                    <input type="text" name="txtquantidade" class="txt" title="Digite a quantidade de correspondência."/>
                     <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Inserir.value='MALOTE';"/>
                 </div>
             </form>
         </div>
+        <?php
+            }
+        ?>
     </body>
 </html>
