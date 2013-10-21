@@ -18,17 +18,30 @@
                 ?>
             </div>
             <div class="topo">
-                Cadastro de Novo Malote
-            </div>
-            <form method="post" action="">
+                    Cadastro de Novo Malote
+                </div>
+                <form method="post" action="Insercao.php">
                 <div class="logar">
+                    <input type="hidden" name="Inserir" value=""/>
                     <label class="lb">Número:</label>
-                    <input type="text" name="txtunidade" class="txt" title="Digite o número do malote."/>
+                    <?php
+                        require 'Conexao.php';
+                        if($_SESSION['Conexao'] == 'Sim')
+                        {
+                            $stmt = oci_parse($conexao, "SELECT sq_malote.nextval FROM Dual");
+                            oci_execute($stmt, OCI_DEFAULT);
+                            while($row = oci_fetch_array($stmt))
+                            {
+                                $registro = $row[0];
+                            }
+                        }
+                    ?>
+                    <input type="text" name="txtnumero" class="txt" value='<?php echo $registro ?>' title="Número do malote." />
                     <label class="lb">Origem:</label>
                     <input type="text" name="txtorigem" class="txt" title="Digite o origem."/>
                     <label class="lb">Destino:</label>
                     <input type="text" name="txtdestino" class="txt" title="Digite o destino."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Consultar.value='GERAR';"/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Inserir.value='MALOTE';"/>
                 </div>
             </form>
         </div>
