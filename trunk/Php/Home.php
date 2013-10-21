@@ -18,12 +18,8 @@
                 ?>
             </div>
             <div id="Conteudo">
-                <h1>Pagina Centrada com CSS sem scroll até 800x600</h1>
-                <h1>Pagina Centrada com CSS sem scroll até 800x600</h1>
-                <h1>Pagina Centrada com CSS sem scroll até 800x600</h1>
-                <h1>Pagina Centrada com CSS sem scroll até 800x600</h1>
-                <h1>Pagina Centrada com CSS sem scroll até 800x600</h1>
-                <h1>Pagina Centrada com CSS sem scroll até 800x600</h1>
+                <h1>Sistema de Gerenciamento de Correspondência</h1>
+                <h1>SGC</h1>
             </div>
         </div>
     </body>
