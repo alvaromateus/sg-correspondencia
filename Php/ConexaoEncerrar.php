@@ -1,0 +1,5 @@
+<?php 	
+	include 'Conexao.php'; 	
+	session_destroy(); 	
+	header('Location: Login.php'); 
+?>
