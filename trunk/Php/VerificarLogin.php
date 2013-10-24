@@ -38,7 +38,7 @@
             //Se não tiver sucesso na conexão ele chama a tela de Login novamente mostrando o erro.
             else
             {
-                header('Location: /SGC/trunk/Php/Login.php?ErroBanco');
+                header('Location: Login.php?ErroBanco');
             }
         ?>
     </body>
