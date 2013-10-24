@@ -10,20 +10,6 @@ body
     margin:0 auto;         
     text-align:left; /* "remédio" para o hack do IE */ 
 }
-#Login
-{
-    padding: 5px;
-    background-color:#FFFFFF;
-    text-align: right;
-    margin-top: auto;
-}
-#Menu
-{
-    padding: 5px;
-    background-color:#FFFFFF;
-    margin-top: auto;
-    margin-left: 12%;
-}
 .topo/*Topo.*/
 {
     width:100%;
@@ -36,13 +22,6 @@ body
     font-size:30px;
     font-weight:bold;
     color:#000;
-}
-.logar/*Alinhamento conteúdo*/
-{
-    width:36%;
-    float:left;
-    margin-left:31.5%;
-    padding: 5px;
 }
 .lb/*Label*/
 {

@@ -10,29 +10,10 @@ body
     margin:0 auto;         
     text-align:left; /* "remédio" para o hack do IE */ 
 }
-#Login
-{
-    padding: 5px;
-    background-color:#FFFFFF;
-    text-align: right;
-    margin-top: auto;
-}
-#Menu
-{
-    padding: 5px;
-    background-color:#FFFFFF;
-    margin-top: auto;
-    margin-left: 12%;
-}
 #Conteudo
 {
     padding: 5px;
     background-color: #FFFFFF;
     margin-top: 20%;
     text-align: center;
-}
-h6
-{
-    font-family: arial, helvetica, sans-serif;
-    font-size: 20px;
 }

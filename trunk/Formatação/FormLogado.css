@@ -1,0 +1,23 @@
+.direita
+{
+    padding: 5px;
+    background-color:#FFFFFF;
+    margin-left: 70%;
+    margin-top: 2%;
+    height: 50px;
+}
+.pessoal
+{
+    font-family:Calibri, Arial, Sans-Serif;
+    font-size:20px; 
+    text-align:right;
+    color:#F00;
+}
+.menupessoal
+{
+    color:#333; 
+    text-decoration:none; 
+    padding:0px 10px; 
+    display:block;
+    text-align: center;
+}

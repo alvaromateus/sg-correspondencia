@@ -7,17 +7,9 @@
     </head>
     <body>
         <div id="Principal">
-            <div id="Login">
-                <?php
-                    require 'Logado.php';
-                ?>
-            </div>
-            <div id="Menu">
-                <?php
-                    require 'Menu.php';
-                ?>
-            </div>
             <?php
+                require 'Logado.php';
+                require 'Menu.php';
             if ($_GET['Malote'] == 1)
             {
             ?>

@@ -5,7 +5,7 @@
     margin:80px auto;
     background-color:transparent;
     text-align:center;
-    font-family:"Times New Roman", Times, serif;
+    font-family:Calibri, Arial, Sans-Serif;
     font-size:40px;
     font-weight:bold;
     color:#000;
@@ -20,7 +20,7 @@
 .lb/*Label*/
 {
     font-family:Calibri, Arial, Sans-Serif;
-    font-size:22px; 
+    font-size:20px; 
     text-align:right;
     width:100px;
     float:left;
@@ -31,7 +31,7 @@
     width:150px;
     float:right;
     font-family:Calibri, Arial, Sans-Serif;
-    font-size:22px;
+    font-size:20px;
 }
 .bt/*Botão*/
 {
@@ -45,5 +45,18 @@
     letter-spacing:-1px; 
     border:1px solid #aaa; 
     text-decoration:none;
+}
+.mensagem/*Alinhamento mensagem*/
+{
+    width:30%;
+    float:left;
+    margin-left:34%;
+}
+p
+{
+    font-family:Calibri, Arial, Sans-Serif;
+    font-size:20px; 
+    text-align:center;
+    color:#F00;
 }
 
