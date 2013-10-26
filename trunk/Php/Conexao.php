@@ -1,6 +1,6 @@
 <?php
-    $user='fernando';
-    $senha='123';
+    $user='correspondencia';
+    $senha='sgc';
     $banco='XE';
     $conexao = oci_connect($user, $senha, $banco);
     if (!$conexao)
