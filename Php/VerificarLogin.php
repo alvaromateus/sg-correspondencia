@@ -13,9 +13,9 @@
             {
                 //Armazena os valores do text que veio em método post.
                 $usuario = $_POST['txtusuario'];
-                $acesso = md5($_POST['txtsenha']);
+                $senha = md5($_POST['txtsenha']);
                 //Verifica o usuário e a senha.
-                $stmt = oci_parse($conexao, "SELECT u.nm_usuario, u.nm_senha, u.nm_nivel_acesso, f.nm_funcionario FROM Usuario u, Funcionario f WHERE u.nm_usuario = '$usuario' AND u.nm_senha = '$acesso' AND u.cd_registro = f.cd_registro");
+                $stmt = oci_parse($conexao, "SELECT u.nm_usuario, u.nm_senha, u.nm_nivel_acesso, f.nm_funcionario FROM Usuario u, Funcionario f WHERE u.nm_usuario = '$usuario' AND u.nm_senha = '$senha' AND u.cd_registro = f.cd_registro");
                 oci_execute($stmt, OCI_DEFAULT);
                 $row = oci_fetch_array($stmt);
                 //Se usuario encontrado armazena o resultado na session para ser usado e chama a tela Home.

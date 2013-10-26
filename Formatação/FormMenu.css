@@ -25,14 +25,14 @@
 }
 .Menu li a
 {
-    color:#333; 
+    color:#000; 
     text-decoration:none; 
     padding:5px 10px; 
     display:block;
 }
 .Menu li a:hover
 {
-    background:#333; 
+    background:#000; 
     color:khaki; 
     -moz-box-shadow:0 3px 10px 0 #CCC; 
     -webkit-box-shadow:0 3px 10px 0 #ccc; 
