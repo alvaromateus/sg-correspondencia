@@ -16,7 +16,7 @@
                         if($_SESSION['Nivel'] == 0)
                         {
                         ?>
-                            <li><a href="CadUsuario.php">Usuário</a></li>
+                            <li><a href="ConUsuario.php">Usuário</a></li>
                         <?php
                         }
                     ?>
