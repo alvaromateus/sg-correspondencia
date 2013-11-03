@@ -17,12 +17,46 @@
                 while(Ocifetch($stmt))
                 {
                     echo "Registro: ".ociresult($stmt, "CD_REGISTRO");
+                    $id = ociresult($stmt, "CD_REGISTRO");
                     echo "Usuário: ".ociresult($stmt, "NM_USUARIO");
                     echo "Senha: ".ociresult($stmt, "NM_SENHA");
                     echo "Nível Acesso: ".ociresult($stmt, "NM_ACESSO");
+                    echo "<a href='ConUsuario.php?Excluir&Confirmacao=$id'>Excluir</a>";
+                    echo "<a href='ConUsuario.php?Atualizar&Confirmacao=$id'>Atualizar</a>";
                     echo "</br>";
                 }
                 ocifreestatement($stmt);
+            }
+            //Verifica qual tipo de solicitação deseja fazer.
+            //Se for Exclusão faz esse bloco.
+            if(isset($_GET['Excluir']))
+            {
+            ?>
+                <div class="mensagem">
+                    <p>
+                        <?php
+                            //Qual id vai ser excluído.
+                            $confirmacao = $_GET['Confirmacao'];
+                            echo "Você vai excluir o número $confirmacao";
+                        ?>
+                    </p>
+                </div>
+            <?php
+            }
+            //Se for Atualização faz esse bloco.
+            if(isset($_GET['Atualizar']))
+            {
+            ?>
+                <div class="mensagem">
+                    <p>
+                        <?php
+                            //Qual id vai ser atualizado.
+                            $confirmacao = $_GET['Confirmacao'];
+                            echo "Você vai atualizar o número $confirmacao";
+                        ?>
+                    </p>
+                </div>
+            <?php
             }
         ?>
     </body>
