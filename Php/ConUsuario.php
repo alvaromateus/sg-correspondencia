@@ -2,33 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoUnidade.css">
         <title>.: Consultar Usuário :.</title>
     </head>
     <body>
-        <?php
-            //Inicia a conexão com o banco.
+          <?php
+          //Inicia a conexão com o banco.
             require 'Conexao.php';
             //Se conexão bem sucedida executa esse if.
             if($_SESSION['Conexao'] == 'Sim')
             {
-                //Seleciona todos os usuários cadastrados
-                $stmt = oci_parse($conexao, "SELECT cd_registro, nm_usuario, nm_senha, nm_acesso FROM Usuario");
-                oci_execute($stmt, OCI_DEFAULT);
-                while(Ocifetch($stmt))
-                {
-                    echo "Registro: ".ociresult($stmt, "CD_REGISTRO");
-                    $id = ociresult($stmt, "CD_REGISTRO");
-                    echo "Usuário: ".ociresult($stmt, "NM_USUARIO");
-                    echo "Senha: ".ociresult($stmt, "NM_SENHA");
-                    echo "Nível Acesso: ".ociresult($stmt, "NM_ACESSO");
-                    echo "<a href='ConUsuario.php?Excluir&Confirmacao=$id'>Excluir</a>";
-                    echo "<a href='ConUsuario.php?Atualizar&Confirmacao=$id'>Atualizar</a>";
-                    echo "</br>";
-                }
-                ocifreestatement($stmt);
-            }
-            //Verifica qual tipo de solicitação deseja fazer.
-            //Se for Exclusão faz esse bloco.
+            //Exclusão faz esse bloco.
             if(isset($_GET['Excluir']))
             {
             ?>
@@ -36,28 +20,68 @@
                     <p>
                         <?php
                             //Qual id vai ser excluído.
-                            $confirmacao = $_GET['Confirmacao'];
+                            $confirmacao = $_GET['I'];
                             echo "Você vai excluir o número $confirmacao";
                         ?>
                     </p>
                 </div>
             <?php
             }
-            //Se for Atualização faz esse bloco.
-            if(isset($_GET['Atualizar']))
+            //Atualização faz esse bloco.
+            else if(isset($_GET['Atualizar']))
             {
             ?>
-                <div class="mensagem">
-                    <p>
-                        <?php
-                            //Qual id vai ser atualizado.
-                            $confirmacao = $_GET['Confirmacao'];
-                            echo "Você vai atualizar o número $confirmacao";
-                        ?>
-                    </p>
+                <div class="topo">
+                    Atualizar Cadastro de Usuário
                 </div>
-            <?php
+                <form method="post" action="Atualizacao.php">
+                    <input type="hidden" name="Atulizar" value="USUARIO"/>
+                    <div class="logar">
+                    <?php
+                        $id = $_GET['I'];
+                        $select = oci_parse($conexao, 'SELECT nm_usuario, nm_senha, nm_acesso FROM Usuario WHERE cd_registro ='.$id);
+                        oci_execute($select, OCI_DEFAULT);
+                        while(Ocifetch($select))
+                        {
+                            ?>
+                            <label class="lb">Registro:</label>
+                            <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
+                            <label class="lb">Usuário:</label>
+                            <input type="text" name="txtusuario" class="txt" value='<?php echo ociresult($select, "NM_USUARIO") ?>'/>
+                            <label class="lb">Senha:</label>
+                            <input type="password" name="txtsenha" class="txt" value='<?php echo ociresult($select, "NM_SENHA") ?>'/>
+                            <label class="lb">Nível de Acesso:</label>
+                            <input type="text" name="txtacesso" class="txt" value='<?php echo ociresult($select, "NM_ACESSO") ?>'/>
+                            <input type="submit" value="Atualizar" name="btatualizar" class="bt" title="Clique para atualizar." />
+                    </div>
+                </form>
+                    <?php
+                        }
+               }else{
+            ?>
+        <form method="get" action="">
+        <?php
+                //Seleciona todos os usuários cadastrados
+                $stmt = oci_parse($conexao, "SELECT * FROM Usuario");
+                oci_execute($stmt, OCI_DEFAULT);
+                while(Ocifetch($stmt))
+                {
+                    $id = ociresult($stmt, "CD_REGISTRO");
+                    ?>
+                    <label class="lb">Usuário:</label>
+                    <input type="text" name="txtusuario" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_USUARIO") ?>'/>
+                    <label class="lb">Senha:</label>
+                    <input type="password" name="txtsenha" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_SENHA") ?>'/>
+                    <label class="lb">Nível de Acesso:</label>
+                    <input type="text" name="txtacesso" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_ACESSO") ?>'/>
+                    <?php
+                    echo "<a href='ConUsuario.php?Atualizar&I=$id'>Atualizar</a>";
+                    echo "<a href='ConUsuario.php?Excluir&I=$id'>Excluir</a>";
+                }
+                oci_free_statement($stmt);
             }
-        ?>
+               }
+            ?>
+            </form>
     </body>
 </html>
