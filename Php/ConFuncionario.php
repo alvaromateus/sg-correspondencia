@@ -20,7 +20,7 @@
                         <?php
                             //Qual id vai ser excluído.
                             $confirmacao = $_GET['I'];
-                            $del = oci_parse($conexao, 'DELETE FROM Usuario WHERE cd_registro ='.$confirmacao);
+                            $del = oci_parse($conexao, 'DELETE FROM Funcionario WHERE cd_registro ='.$confirmacao);
                             oci_execute($del, OCI_DEFAULT);
                             oci_commit($conexao);
                             oci_free_statement($del);
@@ -37,10 +37,10 @@
                         </div>
                         <div class="conteudo">
                             <form method="post" action="Atualizacao.php">
-                                <input type="hidden" name="Atualizar" value="USUARIO"/>
+                                <input type="hidden" name="Atualizar" value="FUNCIONARIO"/>
                                 <?php
                                 $id = $_GET['I'];
-                                $select = oci_parse($conexao, 'SELECT nm_usuario, nm_senha, nm_acesso FROM Usuario WHERE cd_registro ='.$id);
+                                $select = oci_parse($conexao, 'SELECT f.nm_funcionario, f.cd_ramal, d.nm_acesso FROM Usuario WHERE cd_registro ='.$id);
                                 oci_execute($select, OCI_DEFAULT);
                                 while(Ocifetch($select))
                                 {
@@ -67,7 +67,7 @@
                                             <label class="lb">Senha:</label>
                                         </td>
                                         <td>
-                                            <input type="password" name="txtsenha" class="txt" value='<?php echo ociresult($select, "NM_SENHA") ?>'/>
+                                            <input type="text" name="txtsenha" class="txt" value='<?php echo ociresult($select, "NM_SENHA") ?>'/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -101,7 +101,7 @@
                             <form method="get" action="">
                             <?php
                             //Seleciona todos os usuários cadastrados
-                            $stmt = oci_parse($conexao, "SELECT * FROM Usuario");
+                            $stmt = oci_parse($conexao, "SELECT f.cd_registro, f.nm_funcionario, f.cd_ramal, u.nm_unidade, d.nm_departamento, c.nm_cargo FROM Funcionario f, Unidade u, Departamento d, Cargo c WHERE f.cd_unidade = u.cd_unidade AND f.cd_departamento = d.cd_departamento AND f.cd_cargo = c.cd_cargo");
                             oci_execute($stmt, OCI_DEFAULT);
                             while(Ocifetch($stmt))
                             {
@@ -110,26 +110,42 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <label class="lb">Usuário:</label>
+                                            <label class="lb">Funcionário:</label>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtusuario" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_USUARIO") ?>'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="lb">Senha:</label>
-                                        </td>
-                                        <td>
-                                            <input type="password" name="txtsenha" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_SENHA") ?>'/>
+                                            <input type="text" name="txtfuncionario" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_FUNCIONARIO") ?>'/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label class="lb">Nível de Acesso:</label>
+                                            <label class="lb">Ramal:</label>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtacesso" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_ACESSO") ?>'/>
+                                            <input type="text" name="txtramal" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_RAMAL") ?>'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="lb">Unidade:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txtunidade" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_UNIDADE") ?>'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="lb">Departamento:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txtdepartamento" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_DEPARTAMENTO") ?>'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="lb">Cargo:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txtcargo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CARGO") ?>'/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -144,6 +160,7 @@
 
                                     </tr>
                                 </table>
+                                
                             <?php
                             }
                             ?>

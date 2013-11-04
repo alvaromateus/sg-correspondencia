@@ -6,9 +6,8 @@ body
 }
 .Principal
 {
-    width: px;
-    margin:0 auto;         
-    text-align:left; /* "remédio" para o hack do IE */ 
+    width: 1000px;
+    margin:0 auto;
 }
 .topo/*Topo.*/
 {

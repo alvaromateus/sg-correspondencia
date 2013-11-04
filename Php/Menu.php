@@ -11,7 +11,7 @@
                 <li><a href="Home.php">Home</a>
                 <li><a href="#">Administrativo</a>
                 <ul>
-                    <li><a href="CadFuncionario.php">Funcionário</a></li>
+                    <li><a href="conFuncionario.php">Funcionário</a></li>
                     <?php
                         if($_SESSION['Nivel'] == 0)
                         {

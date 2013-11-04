@@ -8,7 +8,6 @@ body
 {
     width: 1000px;
     margin:0 auto;         
-    text-align:left; /* "remédio" para o hack do IE */ 
 }
 .topo/*Topo.*/
 {
