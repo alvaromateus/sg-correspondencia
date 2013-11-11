@@ -43,7 +43,7 @@
                             }
                         }
                     ?>
-                    <input type="text" name="txtnumero" class="txt" value='<?php echo $registro ?>' title="Número do malote." />
+                    <input type="text" name="txtnumero" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Número do malote." />
                     <label class="lb">Origem:</label>
                     <input type="text" name="txtorigem" class="txt" title="Digite o origem."/>
                     <label class="lb">Destino:</label>

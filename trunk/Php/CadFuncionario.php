@@ -15,20 +15,33 @@
                 Cadastro de Novo Funcionário
             </div>
             <div class="logar">
-                <form method="post" action="">
+                <form method="post" action="Insercao.php">
+                    <input type="hidden" name="Inserir" value=""/>
                     <label class="lb">Registro:</label>
-                    <input type="text" name="txtregistro" class="txt" title="Digite o registro."/>
+                    <?php
+                        require 'Conexao.php';
+                        if($_SESSION['Conexao'] == 'Sim')
+                        {
+                            $stmt = oci_parse($conexao, "SELECT sq_funcionario.nextval FROM Dual");
+                            oci_execute($stmt, OCI_DEFAULT);
+                            while($row = oci_fetch_array($stmt))
+                            {
+                                $registro = $row[0];
+                            }
+                        }
+                    ?>
+                    <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Digite o registro."/>
                     <label class="lb">Nome:</label>
-                    <input type="text" name="txnome" class="txt" title="Digite o nome."/>
-                    <label class="lb">Telefone:</label>
-                    <input type="text" name="txttelefone" class="txt" title="Digite o telefone."/>
+                    <input type="text" name="txtnome" class="txt" title="Digite o nome."/>
                     <label class="lb">Ramal:</label>
                     <input type="text" name="txtramal" class="txt" title="Digite o ramal."/>
+                    <label class="lb">Unidade:</label>
+                    <input type="text" name="txtunidade" class="txt" title="Digite a unidade."/>
+                    <label class="lb">Departamento:</label>
+                    <input type="text" name="txtdepartamento" class="txt" title="Digite o departamento."/>
                     <label class="lb">Cargo:</label>
                     <input type="text" name="txtcargo" class="txt" title="Digite o cargo."/>
-                    <label class="lb">Depart.:</label>
-                    <input type="text" name="txtdepartamento" class="txt" title="Digite o departamento."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Consultar.value='GERAR';"/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Inserir.value='FUNCIONARIO';"/>
                 </form>
             </div>
         </div>

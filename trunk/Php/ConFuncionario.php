@@ -20,7 +20,7 @@
                         <?php
                             //Qual id vai ser excluído.
                             $confirmacao = $_GET['I'];
-                            $del = oci_parse($conexao, 'DELETE FROM Funcionario WHERE cd_registro ='.$confirmacao);
+                            $del = oci_parse($conexao, 'DELETE * FROM Funcionario WHERE cd_registro ='.$confirmacao);
                             oci_execute($del, OCI_DEFAULT);
                             oci_commit($del);
                             oci_free_statement($del);
@@ -58,7 +58,7 @@
                                     <td>
                                         <label class="lb">Cargo:</label>
                                     </td>
-                                    <td colspan="2">
+                                    <td>
                                         <label class="lb">Configuração:</label>
                                     </td>
                                 </tr>
@@ -129,7 +129,7 @@
                                     <td>
                                         <label class="lb">Cargo:</label>
                                     </td>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <label class="lb">Configurações:</label>
                                     </td>
                                 </tr>
@@ -165,6 +165,9 @@
                                     </td>
                                     <td>
                                         <?php echo "<a href='ConFuncionario.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo "<a href='CadUsuario.php?I=$id' class='bt2'>Cad. Usuário</a>"; ?>
                                     </td>
                                 </tr>
                             <?php

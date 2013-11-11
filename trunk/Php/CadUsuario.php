@@ -14,17 +14,18 @@
             <div class="topo">
                 Cadastro de Novo Usuário
             </div>
-            <form method="post" action="">
+            <form method="post" action="Insercao.php">
+                <input type="hidden" name="Inserir" value=""/>
                 <div class="logar">
                     <label class="lb">Registro:</label>
-                    <input type="text" name="txtregistro" class="txt" title="Digite o registro."/>
+                    <input type="text" name="txtregistro" class="txt" readonly="readonly" value="<?php echo $_GET['I'] ?>"/>
                     <label class="lb">Usuário:</label>
                     <input type="text" name="txtusuario" class="txt" title="Digite o usuário."/>
                     <label class="lb">Senha:</label>
                     <input type="text" name="txtsenha" class="txt" title="Digite a senha."/>
                     <label class="lb">Acesso:</label>
                     <input type="text" name="txtacesso" class="txt" title="Digite o nível de acesso."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Consultar.value='GERAR';"/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Inserir.value='USUARIO';"/>
                 </div>
             </form>
         </div>

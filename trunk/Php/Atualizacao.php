@@ -23,7 +23,6 @@
             oci_execute($sql);
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConUsuario.php'</script>";
-            //header('Location: ConUsuario.php');
         }
         if($_POST['Atualizar'] == "FUNCIONARIO")
         {
@@ -52,7 +51,6 @@
             oci_execute($sql);
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConFuncionario.php'</script>";
-            //header('Location: ConFuncionario.php');
         }
     }
 ?>
