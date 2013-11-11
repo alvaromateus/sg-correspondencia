@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="../Formatação/.css" />
-        <title>.: Consultar Usuário :.</title>
+        <title>.: SG Correspondência :.</title>
     </head>
     <body>
         <div id ="principal">
@@ -37,56 +37,57 @@
                         </div>
                         <div class="conteudo">
                             <form method="post" action="Atualizacao.php">
-                                <input type="hidden" name="Atualizar" value="FUNCIONARIO"/>
+                                <input type="hidden" name="Atualizar" value="UNIDADE"/>
                                  <table>
                                 <tr>
-                                    <td>
-                                        <label class="lb">Registro:</label>
-                                    </td>
-                                    <td>
-                                        <label class="lb">Funcionário:</label>
-                                    </td>
-                                    <td>
-                                        <label class="lb">Ramal:</label>
-                                    </td>
                                     <td>
                                         <label class="lb">Unidade:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Departamento:</label>
+                                        <label class="lb">Endereço:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Cargo:</label>
+                                        <label class="lb">CEP:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Configuração:</label>
+                                        <label class="lb">Cidade:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Estado:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Telefone:</label>
+                                    </td>
+                                    <td colspan="2">
+                                        <label class="lb">Configurações:</label>
                                     </td>
                                 </tr>
                                 <?php
                                 $id = $_GET['I'];
-                                $select = oci_parse($conexao, "SELECT f.nm_funcionario, f.cd_ramal, u.nm_unidade, d.nm_departamento, c.nm_cargo FROM Funcionario f, Unidade u, Departamento d, Cargo c WHERE f.cd_unidade = u.cd_unidade AND f.cd_departamento = d.cd_departamento AND f.cd_cargo = c.cd_cargo AND f.cd_registro = ".$id);
+                                $select = oci_parse($conexao, "SELECT nm_unidade, nm_endereco_completo, cd_cep, nm_cidade, sg_estado, cd_telefone FROM Unidade WHERE cd_unidade = ".$id);
                                 oci_execute($select, OCI_DEFAULT);
                                 while(Ocifetch($select))
                                 {
                                 ?>
-                                    <tr>
+                                    <tr>                              
                                         <td>
-                                            <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="txtfuncionario" class="txt" value='<?php echo ociresult($select, "NM_FUNCIONARIO") ?>'/>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="txtramal" class="txt" value='<?php echo ociresult($select, "CD_RAMAL") ?>'/>
-                                        </td>
-                                        <td>
+                                            <input type="hidden" name="txtregistro" value='<?php echo $id ?>'/>
                                             <input type="text" name="txtunidade" class="txt" value='<?php echo ociresult($select, "NM_UNIDADE") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtdepartamento" class="txt" value='<?php echo ociresult($select, "NM_DEPARTAMENTO") ?>'/>
+                                            <input type="text" name="txtendereco" class="txt" value='<?php echo ociresult($select, "NM_ENDERECO_COMPLETO") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtcargo" class="txt" value='<?php echo ociresult($select, "NM_CARGO") ?>'/>
+                                            <input type="text" name="txtcep" class="txt" value='<?php echo ociresult($select, "CD_CEP") ?>'/>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txtcidade" class="txt" value='<?php echo ociresult($select, "NM_CIDADE") ?>'/>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txtestado" class="txt" value='<?php echo ociresult($select, "SG_ESTADO") ?>'/>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txttelefone" class="txt" value='<?php echo ociresult($select, "CD_TELEFONE") ?>'/>
                                         </td>
                                         <td>
                                             <input type="submit" value="Atualizar" name="btatualizar" class="bt" title="Clique para atualizar." />
@@ -105,77 +106,74 @@
                     {
                     ?>
                         <div class="topo">
-                            Usuários cadastrados
+                            Unidades cadastradas
                         </div>
                         <div class ="conteudo">
                             <form method="get" action="">
                             <table>
                                 <tr>
                                     <td>
-                                        <label class="lb">Registro:</label>
-                                    </td>
-                                    <td>
-                                        <label class="lb">Funcionário:</label>
-                                    </td>
-                                    <td>
-                                        <label class="lb">Ramal:</label>
-                                    </td>
-                                    <td>
                                         <label class="lb">Unidade:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Departamento:</label>
+                                        <label class="lb">Endereço:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Cargo:</label>
+                                        <label class="lb">CEP:</label>
                                     </td>
-                                    <td colspan="3">
+                                    <td>
+                                        <label class="lb">Cidade:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Estado:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Telefone:</label>
+                                    </td>
+                                    <td colspan="2">
                                         <label class="lb">Configurações:</label>
                                     </td>
                                 </tr>
                             <?php
                             //Seleciona todos os funcionários cadastrados
-                            $stmt = oci_parse($conexao, "SELECT f.cd_registro, f.nm_funcionario, f.cd_ramal, u.nm_unidade, d.nm_departamento, c.nm_cargo FROM Funcionario f, Unidade u, Departamento d, Cargo c WHERE f.cd_unidade = u.cd_unidade AND f.cd_departamento = d.cd_departamento AND f.cd_cargo = c.cd_cargo");
+                            $stmt = oci_parse($conexao, "SELECT * FROM Unidade");
                             oci_execute($stmt, OCI_DEFAULT);
                             while(Ocifetch($stmt))
                             {
-                                $id = ociresult($stmt, "CD_REGISTRO");
+                                $id = ociresult($stmt, "CD_UNIDADE");
                                 ?>
                                 <tr>                              
-                                    <td>
-                                        <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="txtfuncionario" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_FUNCIONARIO") ?>'/>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="txtramal" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_RAMAL") ?>'/>
-                                    </td>
                                     <td>
                                         <input type="text" name="txtunidade" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_UNIDADE") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtdepartamento" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_DEPARTAMENTO") ?>'/>
+                                        <input type="text" name="txtendereco" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_ENDERECO_COMPLETO") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtcargo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CARGO") ?>'/>
+                                        <input type="text" name="txtcep" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_CEP") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConFuncionario.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                        <input type="text" name="txtcidade" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CIDADE") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConFuncionario.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                        <input type="text" name="txtestado" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "SG_ESTADO") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='CadUsuario.php?I=$id' class='bt2'>Cad. Usuário</a>"; ?>
+                                        <input type="text" name="txttelefone" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_TELEFONE") ?>'/>
                                     </td>
-                                </tr>
+                                    <td>
+                                        <?php echo "<a href='ConUnidade.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo "<a href='ConUnidade.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                    </td>
+                                 </tr>
                             <?php
                             }
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='CadFuncionario.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='CadUnidade.php' class='bt1'>Novo Cadastro</a>
                                     </td>
                                 </tr>
                             </table>

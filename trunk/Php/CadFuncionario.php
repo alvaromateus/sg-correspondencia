@@ -16,7 +16,7 @@
             </div>
             <div class="logar">
                 <form method="post" action="Insercao.php">
-                    <input type="hidden" name="Inserir" value=""/>
+                    <input type="hidden" name="Inserir" value="FUNCIONARIO"/>
                     <label class="lb">Registro:</label>
                     <?php
                         require 'Conexao.php';
@@ -41,7 +41,7 @@
                     <input type="text" name="txtdepartamento" class="txt" title="Digite o departamento."/>
                     <label class="lb">Cargo:</label>
                     <input type="text" name="txtcargo" class="txt" title="Digite o cargo."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Inserir.value='FUNCIONARIO';"/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
                 </form>
             </div>
         </div>
