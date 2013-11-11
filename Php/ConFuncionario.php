@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/FormCon.css">
+        <link rel="stylesheet" type="text/css" href="../Formatação/.css" />
         <title>.: Consultar Usuário :.</title>
     </head>
     <body>
@@ -22,9 +22,9 @@
                             $confirmacao = $_GET['I'];
                             $del = oci_parse($conexao, 'DELETE FROM Funcionario WHERE cd_registro ='.$confirmacao);
                             oci_execute($del, OCI_DEFAULT);
-                            oci_commit($conexao);
+                            oci_commit($del);
                             oci_free_statement($del);
-                            header('Location: ConUsuario.php');
+                            echo "<script>alert('Dados excluídos com sucesso.'); window.location='ConFuncionario.php'</script>";
                         ?>
                     <?php
                     }
@@ -38,50 +38,60 @@
                         <div class="conteudo">
                             <form method="post" action="Atualizacao.php">
                                 <input type="hidden" name="Atualizar" value="FUNCIONARIO"/>
+                                 <table>
+                                <tr>
+                                    <td>
+                                        <label class="lb">Registro:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Funcionário:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Ramal:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Unidade:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Departamento:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Cargo:</label>
+                                    </td>
+                                    <td colspan="2">
+                                        <label class="lb">Configuração:</label>
+                                    </td>
+                                </tr>
                                 <?php
                                 $id = $_GET['I'];
-                                $select = oci_parse($conexao, 'SELECT f.nm_funcionario, f.cd_ramal, d.nm_acesso FROM Usuario WHERE cd_registro ='.$id);
+                                $select = oci_parse($conexao, "SELECT f.nm_funcionario, f.cd_ramal, u.nm_unidade, d.nm_departamento, c.nm_cargo FROM Funcionario f, Unidade u, Departamento d, Cargo c WHERE f.cd_unidade = u.cd_unidade AND f.cd_departamento = d.cd_departamento AND f.cd_cargo = c.cd_cargo AND f.cd_registro = ".$id);
                                 oci_execute($select, OCI_DEFAULT);
                                 while(Ocifetch($select))
                                 {
                                 ?>
-                                <table>
                                     <tr>
-                                        <td>
-                                            <label class="lb">Registro:</label>
-                                        </td>
                                         <td>
                                             <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
                                         </td>
-                                    </tr>
-                                    <tr>
                                         <td>
-                                            <label class="lb">Usuário:</label>
+                                            <input type="text" name="txtfuncionario" class="txt" value='<?php echo ociresult($select, "NM_FUNCIONARIO") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtusuario" class="txt" value='<?php echo ociresult($select, "NM_USUARIO") ?>'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="lb">Senha:</label>
+                                            <input type="text" name="txtramal" class="txt" value='<?php echo ociresult($select, "CD_RAMAL") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtsenha" class="txt" value='<?php echo ociresult($select, "NM_SENHA") ?>'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="lb">Nível de Acesso:</label>
+                                            <input type="text" name="txtunidade" class="txt" value='<?php echo ociresult($select, "NM_UNIDADE") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtacesso" class="txt" value='<?php echo ociresult($select, "NM_ACESSO") ?>'/>
+                                            <input type="text" name="txtdepartamento" class="txt" value='<?php echo ociresult($select, "NM_DEPARTAMENTO") ?>'/>
                                         </td>
-                                    </tr>
-                                    <tr>
+                                        <td>
+                                            <input type="text" name="txtcargo" class="txt" value='<?php echo ociresult($select, "NM_CARGO") ?>'/>
+                                        </td>
                                         <td>
                                             <input type="submit" value="Atualizar" name="btatualizar" class="bt" title="Clique para atualizar." />
                                         </td>
+                                    </tr>
                                   </table>
                                 <?php
                                 }
@@ -99,71 +109,73 @@
                         </div>
                         <div class ="conteudo">
                             <form method="get" action="">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label class="lb">Registro:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Funcionário:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Ramal:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Unidade:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Departamento:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Cargo:</label>
+                                    </td>
+                                    <td colspan="2">
+                                        <label class="lb">Configurações:</label>
+                                    </td>
+                                </tr>
                             <?php
-                            //Seleciona todos os usuários cadastrados
+                            //Seleciona todos os funcionários cadastrados
                             $stmt = oci_parse($conexao, "SELECT f.cd_registro, f.nm_funcionario, f.cd_ramal, u.nm_unidade, d.nm_departamento, c.nm_cargo FROM Funcionario f, Unidade u, Departamento d, Cargo c WHERE f.cd_unidade = u.cd_unidade AND f.cd_departamento = d.cd_departamento AND f.cd_cargo = c.cd_cargo");
                             oci_execute($stmt, OCI_DEFAULT);
                             while(Ocifetch($stmt))
                             {
                                 $id = ociresult($stmt, "CD_REGISTRO");
                                 ?>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <label class="lb">Funcionário:</label>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="txtfuncionario" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_FUNCIONARIO") ?>'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="lb">Ramal:</label>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="txtramal" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_RAMAL") ?>'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="lb">Unidade:</label>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="txtunidade" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_UNIDADE") ?>'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="lb">Departamento:</label>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="txtdepartamento" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_DEPARTAMENTO") ?>'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="lb">Cargo:</label>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="txtcargo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CARGO") ?>'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <?php echo "<a href='ConUsuario.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo "<a href='ConUsuario.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-
-                                    </tr>
-                                </table>
-                                
+                                <tr>                              
+                                    <td>
+                                        <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="txtfuncionario" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_FUNCIONARIO") ?>'/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="txtramal" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_RAMAL") ?>'/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="txtunidade" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_UNIDADE") ?>'/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="txtdepartamento" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_DEPARTAMENTO") ?>'/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="txtcargo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CARGO") ?>'/>
+                                    </td>
+                                    <td>
+                                        <?php echo "<a href='ConFuncionario.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo "<a href='ConFuncionario.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                    </td>
+                                </tr>
                             <?php
                             }
                             ?>
+                                <tr>
+                                    <td colspan="8">
+                                        <a href='CadFuncionario.php' class='bt1'>Novo Cadastro</a>
+                                    </td>
+                                </tr>
+                            </table>
                             </form>
                         </div>
                         <?php
