@@ -20,9 +20,8 @@
                         <?php
                             //Qual id vai ser excluído.
                             $confirmacao = $_GET['I'];
-                            $del = oci_parse($conexao, 'DELETE FROM Usuario WHERE cd_registro ='.$confirmacao);
+                            $del = oci_parse($conexao, "DELETE Usuario WHERE cd_registro =".$confirmacao);
                             oci_execute($del, OCI_DEFAULT);
-                            oci_commit($del);
                             oci_free_statement($del);
                             echo "<script>alert('Dados apagado com sucesso.'); window.location='ConUsuario.php'</script>";
                         ?>
