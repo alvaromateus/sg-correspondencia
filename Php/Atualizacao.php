@@ -52,5 +52,26 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConFuncionario.php'</script>";
         }
+        if($_POST['Atualizar'] == "UNIDADE")
+        {
+            $cregistro = $_POST['txtregistro'];
+            $cunidade = $_POST['txtunidade'];
+            $cendereco = $_POST['txtendereco'];
+            $ccep = $_POST['txtcep'];
+            $ccidade = $_POST['txtcidade'];
+            $cestado = $_POST['txtestado'];
+            $ctelefone = $_POST['txttelefone'];
+            $sql = oci_parse($conexao, 'UPDATE Unidade SET nm_unidade = :unidade, nm_cidade = :cidade, sg_estado = :estado, nm_endereco_completo = :endereco, cd_cep = :cep, cd_telefone = :telefone WHERE cd_unidade = :registro');
+            oci_bind_by_name($sql, ':registro', $cregistro);
+            oci_bind_by_name($sql, ':unidade', $cunidade);
+            oci_bind_by_name($sql, ':endereco', $cendereco);
+            oci_bind_by_name($sql, ':cep', $ccep);
+            oci_bind_by_name($sql, ':cidade', $ccidade);
+            oci_bind_by_name($sql, ':estado', $cestado);
+            oci_bind_by_name($sql, ':telefone', $ctelefone);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConUnidade.php'</script>";
+        }
     }
 ?>

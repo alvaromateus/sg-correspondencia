@@ -14,8 +14,22 @@
             <div class="topo">
                 Cadastro de Nova Unidade
             </div>
-            <form method="post" action="">
+            <form method="post" action="Insercao.php">
+                <input type="hidden" name="Inserir" value="UNIDADE"/>
+                <?php
+                    require 'Conexao.php';
+                    if($_SESSION['Conexao'] == 'Sim')
+                    {
+                        $stmt = oci_parse($conexao, "SELECT sq_unidade.nextval FROM Dual");
+                        oci_execute($stmt, OCI_DEFAULT);
+                        while($row = oci_fetch_array($stmt))
+                        {
+                            $registro = $row[0];
+                        }
+                    }
+                ?>
                 <div class="logar">
+                    <input type="hidden" name="txtregistro" value='<?php echo $registro ?>'/>
                     <label class="lb">Unidade:</label>
                     <input type="text" name="txtunidade" class="txt" title="Digite o nome da Unidade."/>
                     <label class="lb">Endereço:</label>
@@ -28,7 +42,7 @@
                     <input type="text" name="txtestado" class="txt" title="Digite o estado."/>
                     <label class="lb">Telefone:</label>
                     <input type="tel" name="txttelefone" class="txt" title="Digite o telefone."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Consultar.value='GERAR';"/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
                 </div>
             </form>
         </div>

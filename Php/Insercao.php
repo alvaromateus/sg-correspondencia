@@ -60,5 +60,26 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConUsuario.php'</script>";
         }
+        if($_POST['Inserir'] == "UNIDADE")
+        {
+            $sql = oci_parse($conexao, 'INSERT INTO Unidade (cd_unidade, nm_unidade, nm_cidade, sg_estado, nm_endereco_completo, cd_cep, cd_telefone) VALUES (:registro, :unidade, :cidade, :estado, :endereco, :cep, :telefone)');
+            $cregistro = $_POST['txtregistro'];
+            $cunidade = $_POST['txtunidade'];
+            $ccidade = $_POST['txtcidade'];
+            $cestado = $_POST['txtestado'];
+            $cendereco = $_POST['txtendereco'];
+            $ccep = $_POST['txtcep'];
+            $ctelefone = $_POST['txttelefone'];
+            oci_bind_by_name($sql, ':registro', $cregistro);
+            oci_bind_by_name($sql, ':unidade', $cunidade);
+            oci_bind_by_name($sql, ':cidade', $ccidade);
+            oci_bind_by_name($sql, ':estado', $cestado);
+            oci_bind_by_name($sql, ':endereco', $cendereco);
+            oci_bind_by_name($sql, ':cep', $ccep);
+            oci_bind_by_name($sql, ':telefone', $ctelefone);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConUnidade.php'</script>";
+        }
     }
 ?>
