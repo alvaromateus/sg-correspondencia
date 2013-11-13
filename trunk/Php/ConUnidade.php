@@ -24,7 +24,7 @@
                             oci_execute($del, OCI_DEFAULT);
                             oci_commit($del);
                             oci_free_statement($del);
-                            echo "<script>alert('Dados excluídos com sucesso.'); window.location='ConFuncionario.php'</script>";
+                            echo "<script>alert('Dados excluídos com sucesso.'); window.location='ConUnidade.php'</script>";
                         ?>
                     <?php
                     }

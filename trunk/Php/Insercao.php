@@ -81,5 +81,16 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConUnidade.php'</script>";
         }
+         if($_POST['Inserir'] == "DEPARTAMENTO")
+        {
+            $sql = oci_parse($conexao, 'INSERT INTO Departamento (cd_departamento, nm_departamento) VALUES (:registro, :departamento)');
+            $cregistro = $_POST['txtregistro'];
+            $cunidade = $_POST['txtdepartamento'];
+            oci_bind_by_name($sql, ':registro', $cregistro);
+            oci_bind_by_name($sql, ':departamento', $cunidade);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConDepartamento.php'</script>";
+        }
     }
 ?>
