@@ -24,7 +24,7 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConUsuario.php'</script>";
         }
-        if($_POST['Atualizar'] == "FUNCIONARIO")
+        else if($_POST['Atualizar'] == "FUNCIONARIO")
         {
             $dep = $_POST['txtdepartamento'];
             $uni = $_POST['txtunidade'];
@@ -52,7 +52,7 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConFuncionario.php'</script>";
         }
-        if($_POST['Atualizar'] == "UNIDADE")
+        else if($_POST['Atualizar'] == "UNIDADE")
         {
             $cregistro = $_POST['txtregistro'];
             $cunidade = $_POST['txtunidade'];
@@ -72,6 +72,17 @@
             oci_execute($sql);
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConUnidade.php'</script>";
+        }
+        else//($_POST['Atualizar'] == "DEPARTAMENTO")
+        {
+            $cregistro = $_POST['txtregistro'];
+            $cdepartamento = $_POST['txtdepartamento'];
+            $sql = oci_parse($conexao, 'UPDATE Departamento SET nm_departamento = :departamento WHERE cd_departamento = :registro');
+            oci_bind_by_name($sql, ':registro', $cregistro);
+            oci_bind_by_name($sql, ':departamento', $cdepartamento);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConDepartamento.php'</script>";
         }
     }
 ?>

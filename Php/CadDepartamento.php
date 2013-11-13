@@ -14,15 +14,25 @@
             <div class="topo">
                 Cadastro de Novo Departamento
             </div>
-            <form method="post" action="">
+            <form method="post" action="Insercao.php">
+                <input type="hidden" name="Inserir" value="DEPARTAMENTO"/>
+                <?php
+                    require 'Conexao.php';
+                    if($_SESSION['Conexao'] == 'Sim')
+                    {
+                        $stmt = oci_parse($conexao, "SELECT sq_departamento.nextval FROM Dual");
+                        oci_execute($stmt, OCI_DEFAULT);
+                        while($row = oci_fetch_array($stmt))
+                        {
+                            $registro = $row[0];
+                        }
+                    }
+                ?>
                 <div class="logar">
-                    <label class="lb">Unidade:</label>
-                    <input type="text" name="txtunidade" class="txt" title="Digite o nome da Unidade."/>
-                    <label class="lb">Código:</label>
-                    <input type="text" name="txtcodigo" class="txt" title="Digite o código."/>
-                    <label class="lb">Depart.:</label>
+                    <input type="hidden" name="txtregistro" value='<?php echo $registro ?>'/>
+                    <label class="lb">Departamento:</label>
                     <input type="text" name="txtdepartamento" class="txt" title="Digite o nome do departamento."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Consultar.value='GERAR';"/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." />
                 </div>
             </form>
         </div>

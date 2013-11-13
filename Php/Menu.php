@@ -9,7 +9,7 @@
         <div class="menu">
             <ul class="Menu">
                 <li><a href="Home.php">Home</a>
-                <li><a href="#">Administrativo</a>
+                <li><a href="Home.php">Administrativo</a>
                 <ul>
                     <li><a href="conFuncionario.php">Funcionário</a></li>
                     <?php
@@ -21,19 +21,19 @@
                         }
                     ?>
                 </ul>
-                <li><a href="#">Empresa</a>
+                <li><a href="Home.php">Empresa</a>
                 <ul>
                     <li><a href="ConUnidade.php">Unidade</a></li>
-                    <li><a href="CadDepartamento.php">Departamento</a></li>
+                    <li><a href="ConDepartamento.php">Departamento</a></li>
                     <li><a href="CadCargo.php">Cargo</a></li>
                 </ul>
-                <li><a href="#">Gerenciamento</a>
+                <li><a href="Home.php">Gerenciamento</a>
                 <ul>
                     <li><a href="CadCorrespondencia.php">Correspondência</a></li>
                     <li><a href="CadMalote.php?Malote=0">Malote</a></li>
                     <li><a href="CadProtocolo.php">Protocolo</a></li>
                 </ul>
-                <li><a href="#">Sobre</a>
+                <li><a href="Home.php">Sobre</a>
             </ul>
         </div>
     </body>
