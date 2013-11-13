@@ -25,7 +25,7 @@
                 <ul>
                     <li><a href="ConUnidade.php">Unidade</a></li>
                     <li><a href="ConDepartamento.php">Departamento</a></li>
-                    <li><a href="CadCargo.php">Cargo</a></li>
+                    <li><a href="ConCargo.php">Cargo</a></li>
                 </ul>
                 <li><a href="Home.php">Gerenciamento</a>
                 <ul>

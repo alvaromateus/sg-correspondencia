@@ -14,13 +14,25 @@
             <div class="topo">
                 Cadastro de Novo Cargo
             </div>
-            <form method="post" action="">
+            <form method="post" action="Insercao.php">
+                <input type="hidden" name="Inserir" value="CARGO"/>
+                <?php
+                    require 'Conexao.php';
+                    if($_SESSION['Conexao'] == 'Sim')
+                    {
+                        $stmt = oci_parse($conexao, "SELECT sq_cargo.nextval FROM Dual");
+                        oci_execute($stmt, OCI_DEFAULT);
+                        while($row = oci_fetch_array($stmt))
+                        {
+                            $registro = $row[0];
+                        }
+                    }
+                ?>
                 <div class="logar">
-                    <label class="lb">Código:</label>
-                    <input type="text" name="txtcodigo" class="txt" title="Digite o código."/>
+                    <input type="hidden" name="txtregistro" value='<?php echo $registro ?>'/>
                     <label class="lb">Cargo:</label>
                     <input type="text" name="txtcargo" class="txt" title="Digite o cargo."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Consultar.value='GERAR';"/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." />
                 </div>
             </form>
         </div>
