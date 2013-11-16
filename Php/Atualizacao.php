@@ -95,5 +95,26 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConCargo.php'</script>";
         }
+        if ($_POST['Atualizar'] == "CORRESPONDENCIA")
+        {
+            $cregistro = $_POST['txtregistro'];
+            $ctipo = $_POST['txttipo'];
+            $ctamanho = $_POST['txttamanho'];
+            $cremetente = $_POST['txtremetente'];
+            $cdestinatario = $_POST['txtdestinatario'];
+            $cmalote = $_POST['txtmalote'];
+            $cprotocolo = $_POST['txtprotocolo'];
+            $sql = oci_parse($conexao, 'UPDATE Correspondencia SET nm_tipo = :tipo, nm_tamanho = :tamanho, nm_remetente = :remetente, nm_destinatario = :destinatario, cd_malote = :malote, cd_protocolo = :protocolo WHERE cd_correspondencia = :registro');
+            oci_bind_by_name($sql, ':registro', $cregistro);
+            oci_bind_by_name($sql, ':tipo', $ctipo);
+            oci_bind_by_name($sql, ':tamanho', $ctamanho);
+            oci_bind_by_name($sql, ':remetente', $cremetente);
+            oci_bind_by_name($sql, ':destinatario', $cdestinatario);
+            oci_bind_by_name($sql, ':malote', $cmalote);
+            oci_bind_by_name($sql, ':protocolo', $cprotocolo);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConCorrespondencia.php'</script>";
+        }
     }
 ?>
