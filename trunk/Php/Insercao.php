@@ -103,5 +103,36 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConCargo.php'</script>";
         }
+        if($_POST['Inserir'] == "CORRESPONDENCIA")
+        {
+            $sql = oci_parse($conexao, 'INSERT INTO Correspondencia (cd_correspondencia, nm_tipo, nm_tamanho, nm_remetente, nm_destinatario, cd_malote, cd_protocolo, cd_registro) VALUES (:correspondencia, :tipo, :tamanho, :remetente, :destinatario, :malote, :protocolo, :usuario)');
+            $cregistro = $_POST['txtnumero'];
+            $ctipo = $_POST['txttipo'];
+            $ctamanho = $_POST['txttamanho'];
+            $cremetente = $_POST['txtremetente'];
+            $cdestinatario = $_POST['txtdestinatario'];
+            $cmalote = $_POST['txtmalote'];
+            if ($cmalote == " ")
+            {
+                $cmalote = 0;
+            }
+            $cprotocolo = $_POST['txtprotocolo'];
+            if ($cprotocolo == " ")
+            {
+                $cprotocolo = 0;
+            }
+            $cusuario = $_POST['txtusuario'];
+            oci_bind_by_name($sql, ':correspondencia', $cregistro);
+            oci_bind_by_name($sql, ':tipo', $ctipo);
+            oci_bind_by_name($sql, ':tamanho', $ctamanho);
+            oci_bind_by_name($sql, ':remetente', $cremetente);
+            oci_bind_by_name($sql, ':destinatario', $cdestinatario);
+            oci_bind_by_name($sql, ':malote', $cmalote);
+            oci_bind_by_name($sql, ':protocolo', $cprotocolo);
+            oci_bind_by_name($sql, ':usuario', $cusuario);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConCorrespondencia.php'</script>";
+        }
     }
 ?>
