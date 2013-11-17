@@ -12,19 +12,28 @@
                 require 'Menu.php';
             ?>
             <div class="topo">
-                Cadastro de Novo Protocolo
+                Cadastrar Novo Protocolo
             </div>
-            <form method="post" action="">
+            <form method="post" action="Insercao.php">
                 <div class="logar">
+                    <input type="hidden" name="Inserir" value="PROTOCOLO"/>
                     <label class="lb">Número:</label>
-                    <input type="text" name="txtnumero" class="txt" title="Digite o número do protocolo."/>
-                    <label class="lb">Quant.:</label>
-                    <input type="text" name="txtquant" class="txt" title="Digite a quantidade de correspondência."/>
-                    <label class="lb">Registro:</label>
-                    <input type="text" name="txtregistro" class="txt" title="Digite o registro funcionário."/>
+                    <?php
+                        require 'Conexao.php';
+                        if($_SESSION['Conexao'] == 'Sim')
+                        {
+                            $stmt = oci_parse($conexao, "SELECT sq_protocolo.nextval FROM Dual");
+                            oci_execute($stmt, OCI_DEFAULT);
+                            while($row = oci_fetch_array($stmt))
+                            {
+                                $registro = $row[0];
+                            }
+                        }
+                    ?>
+                    <input type="text" name="txtnumero" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Número do protocolo."/>
                     <label class="lb">Data:</label>
                     <input type="text" name="txtdata" class="txt" title="Digite a data de recebimento."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Consultar.value='GERAR';"/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
                 </div>
             </form>
         </div>

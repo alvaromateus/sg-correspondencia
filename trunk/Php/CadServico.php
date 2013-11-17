@@ -14,13 +14,26 @@
             <div class="topo">
                 Cadastro de Novo Serviço
             </div>
-            <form method="post" action="">
+            <form method="post" action="Insercao.php">
                 <div class="logar">
+                    <input type="hidden" name="Inserir" value="SERVICO"/>
                     <label class="lb">Código:</label>
-                    <input type="text" name="txtcodigo" class="txt" title="Digite o códigoendereço."/>
+                    <?php
+                        require 'Conexao.php';
+                        if($_SESSION['Conexao'] == 'Sim')
+                        {
+                            $stmt = oci_parse($conexao, "SELECT sq_servico.nextval FROM Dual");
+                            oci_execute($stmt, OCI_DEFAULT);
+                            while($row = oci_fetch_array($stmt))
+                            {
+                                $registro = $row[0];
+                            }
+                        }
+                    ?>
+                    <input type="text" name="txtcodigo" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Código endereço."/>
                     <label class="lb">Serviço:</label>
-                    <input type="text" name="txtservico" class="txt" title="Digite o serviço."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Consultar.value='GERAR';"/>
+                    <input type="text" name="txtservico" class="txt" title="Digite o tipo do serviço."/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
                 </div>
             </form>
         </div>
