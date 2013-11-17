@@ -29,15 +29,21 @@
             $dep = $_POST['txtdepartamento'];
             $uni = $_POST['txtunidade'];
             $car = $_POST['txtcargo'];
-            $sql_ = oci_parse($conexao, "SELECT u.cd_unidade, d.cd_departamento, c.cd_cargo FROM Unidade u, Departamento d, Cargo c WHERE u.nm_unidade = '".$uni."' AND d.nm_departamento = '".$dep. "'AND c.nm_cargo = '".$car."'");
-            oci_execute($sql_, OCI_DEFAULT);
-            while(Ocifetch($sql_))
-            {
-                $cunidade = ociresult($sql_, "CD_UNIDADE");
-                $cdepartamento = ociresult($sql_, "CD_DEPARTAMENTO");
-                $ccargo = ociresult($sql_, "CD_CARGO");
-            }
-            oci_free_statement($sql_);
+            $sqlu = oci_parse($conexao, "SELECT cd_unidade FROM Unidade WHERE nm_unidade = '".$uni."'");
+            oci_execute($sqlu, OCI_DEFAULT);
+            $row = oci_fetch_array($sqlu);
+            $cunidade = $row[0];
+            oci_free_statement($sqlu);
+            $sqld = oci_parse($conexao, "SELECT cd_departamento FROM Departamento WHERE nm_departamento = '".$dep."'");
+            oci_execute($sqld, OCI_DEFAULT);
+            $row = oci_fetch_array($sqld);
+            $cdepartamento = $row[0];
+            oci_free_statement($sqld);
+            $sqlc = oci_parse($conexao, "SELECT cd_cargo FROM Cargo WHERE nm_cargo = '".$car."'");
+            oci_execute($sqlc, OCI_DEFAULT);
+            $row = oci_fetch_array($sqlc);
+            $ccargo = $row[0];
+            oci_free_statement($sqlc);
             $cregistro = $_POST['txtregistro'];
             $cfuncionario = $_POST['txtfuncionario'];
             $cramal = $_POST['txtramal'];
@@ -127,12 +133,6 @@
             oci_execute($select, OCI_DEFAULT);
             $row = oci_fetch_array($select);
             $cservico = $row[0];
-            echo $cmalote;
-            echo $corigem;
-            echo $cdestino;
-            echo $cdata;
-            echo $cctipo;
-            echo $cservico;
             $sql = oci_parse($conexao, "UPDATE Malote SET nm_origem = :origem, nm_destino = :destino, dt_malote = :data, cd_servico = :servico WHERE cd_malote = :malote");
             oci_bind_by_name($sql, ':malote', $cmalote);
             oci_bind_by_name($sql, ':origem', $corigem);
