@@ -2,21 +2,6 @@
     require 'Conexao.php';
     if($_SESSION['Conexao'] == 'Sim')
     {
-        if($_POST['Inserir'] == "MALOTE")
-        {
-            $sql = oci_parse($conexao, 'INSERT INTO Malote (cd_malote, nm_origem, nm_destino, qt_correspondencia) VALUES (:malote, :origem, :destino, :quantidade)');
-            $malote = $_POST['txtnumero'];
-            $origem = $_POST['txtorigem'];
-            $destino = $_POST['txtdestino'];
-            $quantidade = $_POST['txtquantidade'];
-            oci_bind_by_name($sql, ':malote', $malote);
-            oci_bind_by_name($sql, ':origem', $origem);
-            oci_bind_by_name($sql, ':destino', $destino);
-            oci_bind_by_name($sql, ':quantidade', $quantidade);
-            oci_execute($sql);
-            oci_free_statement($sql);
-            echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConFu.php'</script>";
-        }
         if($_POST['Inserir'] == "FUNCIONARIO")
         {
             $dep = $_POST['txtdepartamento'];
@@ -105,6 +90,7 @@
         }
         if($_POST['Inserir'] == "CORRESPONDENCIA")
         {
+            session_start();
             $sql = oci_parse($conexao, 'INSERT INTO Correspondencia (cd_correspondencia, nm_tipo, nm_tamanho, nm_remetente, nm_destinatario, cd_malote, cd_protocolo, cd_registro) VALUES (:correspondencia, :tipo, :tamanho, :remetente, :destinatario, :malote, :protocolo, :usuario)');
             $cregistro = $_POST['txtnumero'];
             $ctipo = $_POST['txttipo'];
@@ -112,16 +98,8 @@
             $cremetente = $_POST['txtremetente'];
             $cdestinatario = $_POST['txtdestinatario'];
             $cmalote = $_POST['txtmalote'];
-            if ($cmalote == " ")
-            {
-                $cmalote = 0;
-            }
             $cprotocolo = $_POST['txtprotocolo'];
-            if ($cprotocolo == " ")
-            {
-                $cprotocolo = 0;
-            }
-            $cusuario = $_POST['txtusuario'];
+            $cusuario = $_SESSION['Registro'];
             oci_bind_by_name($sql, ':correspondencia', $cregistro);
             oci_bind_by_name($sql, ':tipo', $ctipo);
             oci_bind_by_name($sql, ':tamanho', $ctamanho);
@@ -133,6 +111,30 @@
             oci_execute($sql);
             oci_free_statement($sql);
             echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConCorrespondencia.php'</script>";
+        }
+        if($_POST['Inserir'] == "MALOTE")
+        {
+            $malote = $_POST['txtnumero'];
+            $origem = $_POST['txtorigem'];
+            $destino = $_POST['txtdestino'];
+            $data = $_POST['txtdata'];
+            $servico = $_POST['txtservico'];
+            $sql_ = oci_parse($conexao, "SELECT cd_servico FROM Servico WHERE nm_tipo = '".$servico."'");
+            oci_execute($sql_, OCI_DEFAULT);
+            while(Ocifetch($sql_))
+            {
+                $cservico = ociresult($sql_, "CD_SERVICO");
+            }
+            oci_free_statement($sql_);
+            $sql = oci_parse($conexao, 'INSERT INTO Malote (cd_malote, nm_origem, nm_destino, dt_malote, cd_servico) VALUES (:malote, :origem, :destino, :data, :servico)');
+            oci_bind_by_name($sql, ':malote', $malote);
+            oci_bind_by_name($sql, ':origem', $origem);
+            oci_bind_by_name($sql, ':destino', $destino);
+            oci_bind_by_name($sql, ':data', $data);
+            oci_bind_by_name($sql, ':servico', $cservico);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConMalote.php'</script>";
         }
     }
 ?>

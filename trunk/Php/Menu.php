@@ -30,7 +30,7 @@
                 <li><a href="Home.php">Gerenciamento</a>
                 <ul>
                     <li><a href="ConCorrespondencia.php">Correspondência</a></li>
-                    <li><a href="CadMalote.php?Malote=0">Malote</a></li>
+                    <li><a href="ConMalote.php?Malote=0">Malote</a></li>
                     <li><a href="CadProtocolo.php">Protocolo</a></li>
                 </ul>
                 <li><a href="Home.php">Sobre</a>
