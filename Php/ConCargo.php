@@ -20,9 +20,8 @@
                         <?php
                             //Qual id vai ser excluído.
                             $confirmacao = $_GET['I'];
-                            $del = oci_parse($conexao, "DELETE Cargo WHERE cd_registro =".$confirmacao);
-                            oci_execute($del, OCI_DEFAULT);
-                            oci_commit($del);
+                            $del = oci_parse($conexao, "DELETE FROM Cargo WHERE cd_cargo =".$confirmacao);
+                            oci_execute($del, OCI_COMMIT_ON_SUCCESS);
                             oci_free_statement($del);
                             echo "<script>alert('Dados excluídos com sucesso.'); window.location='ConCargo.php'</script>";
                         ?>
