@@ -136,5 +136,27 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConMalote.php'</script>";
         }
+        if($_POST['Inserir'] == "PROTOCOLO")
+        {
+            $sql = oci_parse($conexao, 'INSERT INTO Protocolo (cd_protocolo, dt_recebimento) VALUES (:protocolo, :data)');
+            $cprotocolo = $_POST['txtnumero'];
+            $cdata = $_POST['txtdata'];
+            oci_bind_by_name($sql, ':protocolo', $cprotocolo);
+            oci_bind_by_name($sql, ':data', $cdata);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConProtocolo.php'</script>";
+        }
+        if($_POST['Inserir'] == "SERVICO")
+        {
+            $sql = oci_parse($conexao, 'INSERT INTO Servico (cd_servico, nm_tipo) VALUES (:servico, :tipo)');
+            $cservico = $_POST['txtcodigo'];
+            $ctipo = $_POST['txtservico'];
+            oci_bind_by_name($sql, ':servico', $cservico);
+            oci_bind_by_name($sql, ':tipo', $ctipo);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados cadastrado com sucesso.'); window.location='ConServico.php'</script>";
+        }
     }
 ?>

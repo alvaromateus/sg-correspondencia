@@ -143,5 +143,27 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConMalote.php'</script>";
         }
+        if ($_POST['Atualizar'] == "PROTOCOLO")
+        {
+            $cprotocolo = $_POST['txtprotocolo'];
+            $cdata = $_POST['txtdata'];
+            $sql = oci_parse($conexao, 'UPDATE Protocolo SET dt_recebimento = :data WHERE cd_protocolo = :protocolo');
+            oci_bind_by_name($sql, ':protocolo', $cprotocolo);
+            oci_bind_by_name($sql, ':data', $cdata);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConProtocolo.php'</script>";
+        }
+        if ($_POST['Atualizar'] == "SERVICO")
+        {
+            $cservico = $_POST['txtservico'];
+            $ctipo = $_POST['txttipo'];
+            $sql = oci_parse($conexao, 'UPDATE Servico SET nm_tipo = :tipo WHERE cd_servico = :servico');
+            oci_bind_by_name($sql, ':servico', $cservico);
+            oci_bind_by_name($sql, ':tipo', $ctipo);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConServico.php'</script>";
+        }
     }
 ?>
