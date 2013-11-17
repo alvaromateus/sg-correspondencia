@@ -29,7 +29,7 @@
                 </div>
                 <form method="post" action="Insercao.php">
                 <div class="logar">
-                    <input type="hidden" name="Inserir" value=""/>
+                    <input type="hidden" name="Inserir" value="MALOTE"/>
                     <label class="lb">Número:</label>
                     <?php
                         require 'Conexao.php';
@@ -48,9 +48,11 @@
                     <input type="text" name="txtorigem" class="txt" title="Digite o origem."/>
                     <label class="lb">Destino:</label>
                     <input type="text" name="txtdestino" class="txt" title="Digite o destino."/>
-                    <label class="lb">Quant.:</label>
-                    <input type="text" name="txtquantidade" class="txt" title="Digite a quantidade de correspondência."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." onClick="Inserir.value='MALOTE';"/>
+                    <label class="lb">Data:</label>
+                    <input type="text" name="txtdata" class="txt" title="Digite a data."/>
+                    <label class="lb">Servico:</label>
+                    <input type="text" name="txtservico" class="txt" title="Digite o tipo de serviço."/>
+                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." />
                 </div>
             </form>
         </div>

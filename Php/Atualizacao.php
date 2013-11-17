@@ -116,5 +116,32 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConCorrespondencia.php'</script>";
         }
+        if ($_POST['Atualizar'] == "MALOTE")
+        {
+            $cmalote = $_POST['txtmalote'];
+            $corigem = $_POST['txtorigem'];
+            $cdestino = $_POST['txtdestino'];
+            $cdata = $_POST['txtdata'];
+            $cctipo = $_POST['txttipo'];
+            $select = oci_parse($conexao, "SELECT cd_servico FROM Servico WHERE nm_tipo = '".$cctipo."'");
+            oci_execute($select, OCI_DEFAULT);
+            $row = oci_fetch_array($select);
+            $cservico = $row[0];
+            echo $cmalote;
+            echo $corigem;
+            echo $cdestino;
+            echo $cdata;
+            echo $cctipo;
+            echo $cservico;
+            $sql = oci_parse($conexao, "UPDATE Malote SET nm_origem = :origem, nm_destino = :destino, dt_malote = :data, cd_servico = :servico WHERE cd_malote = :malote");
+            oci_bind_by_name($sql, ':malote', $cmalote);
+            oci_bind_by_name($sql, ':origem', $corigem);
+            oci_bind_by_name($sql, ':destino', $cdestino);
+            oci_bind_by_name($sql, ':data', $cdata);
+            oci_bind_by_name($sql, ':servico', $cservico);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConMalote.php'</script>";
+        }
     }
 ?>

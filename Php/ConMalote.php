@@ -33,28 +33,51 @@
                     {
                     ?>
                         <div class="topo">
-                            Atualizar Cadastro de Cargo
+                            Atualizar Cadastro de Malote
                         </div>
                         <div class="conteudo">
                             <form method="post" action="Atualizacao.php">
-                                <input type="hidden" name="Atualizar" value="CARGO"/>
+                                <input type="hidden" name="Atualizar" value="MALOTE"/>
                                  <table>
                                 <tr>
                                     <td>
-                                        <label class="lb">Cargo:</label>
+                                        <label class="lb">Número:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Origem:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Destino:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Data:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Serviço:</label>
                                     </td>
                                 </tr>
                                 <?php
                                 $id = $_GET['I'];
-                                $select = oci_parse($conexao, "SELECT nm_cargo FROM Cargo WHERE cd_cargo = ".$id);
+                                $select = oci_parse($conexao, "SELECT m.nm_origem, m.nm_destino, m.dt_malote, s.nm_tipo FROM Malote m, Servico s WHERE m.cd_servico = s.cd_servico AND cd_malote = ".$id);
                                 oci_execute($select, OCI_DEFAULT);
                                 while(Ocifetch($select))
                                 {
                                 ?>
                                     <tr>                              
                                         <td>
-                                            <input type="hidden" name="txtregistro" value='<?php echo $id ?>'/>
-                                            <input type="text" name="txtcargo" class="txt" value='<?php echo ociresult($select, "NM_CARGO") ?>'/>
+                                            <input type="text" name="txtmalote" readonly="readonly" value='<?php echo $id ?>'/>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txtorigem" class="txt" value='<?php echo ociresult($select, "NM_ORIGEM") ?>'/>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txtdestino" class="txt" value='<?php echo ociresult($select, "NM_DESTINO") ?>'/>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txtdata" class="txt" value='<?php echo ociresult($select, "DT_MALOTE") ?>'/>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="txttipo" class="txt" value='<?php echo ociresult($select, "NM_TIPO") ?>'/>
                                         </td>
                                         <td>
                                             <input type="submit" value="Atualizar" name="btatualizar" class="bt" title="Clique para atualizar." />
@@ -73,14 +96,26 @@
                     {
                     ?>
                         <div class="topo">
-                            Departamentos cadastradas
+                            Malotes cadastrados
                         </div>
                         <div class ="conteudo">
                             <form method="get" action="">
                             <table>
                                 <tr>
                                     <td>
-                                        <label class="lb">Cargo:</label>
+                                        <label class="lb">Número:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Origem:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Destino:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Data:</label>
+                                    </td>
+                                    <td>
+                                        <label class="lb">Serviço:</label>
                                     </td>
                                     <td colspan="2">
                                         <label class="lb">Configurações:</label>
@@ -88,21 +123,33 @@
                                 </tr>
                             <?php
                             //Seleciona todos os funcionários cadastrados
-                            $stmt = oci_parse($conexao, "SELECT * FROM Cargo");
+                            $stmt = oci_parse($conexao, "SELECT m.cd_malote, m.nm_origem, m.nm_destino, m.dt_malote, s.nm_tipo FROM Malote m, Servico s WHERE m.cd_servico = s.cd_servico");
                             oci_execute($stmt, OCI_DEFAULT);
                             while(Ocifetch($stmt))
                             {
-                                $id = ociresult($stmt, "CD_CARGO");
+                                $id = ociresult($stmt, "CD_MALOTE");
                                 ?>
                                 <tr>                              
                                     <td>
-                                        <input type="text" name="txtcargo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CARGO") ?>'/>
+                                        <input type="text" name="txtcorrespondencia" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConCargo.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                        <input type="text" name="txtorigem" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_ORIGEM") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConCargo.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                        <input type="text" name="txtdestino" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_DESTINO") ?>'/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="txtdata" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "DT_MALOTE") ?>'/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="txttipo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_TIPO") ?>'/>
+                                    </td>
+                                    <td>
+                                        <?php echo "<a href='ConMalote.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo "<a href='ConMalote.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
                                     </td>
                                  </tr>
                             <?php
@@ -110,7 +157,7 @@
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='CadCargo.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='CadMalote.php' class='bt1'>Novo Cadastro</a>
                                     </td>
                                 </tr>
                             </table>
