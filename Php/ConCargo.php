@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/.css" />
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoHome.css" />
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -31,13 +31,13 @@
                     else if(isset($_GET['Atualizar']))
                     {
                     ?>
-                        <div class="topo">
-                            Atualizar Cadastro de Cargo
+                        <div id="topo">
+                            Atualizar Cargo
                         </div>
-                        <div class="conteudo">
+                        <div id="conteudo">
                             <form method="post" action="Atualizacao.php">
                                 <input type="hidden" name="Atualizar" value="CARGO"/>
-                                 <table>
+                                <table align="center">
                                 <tr>
                                     <td>
                                         <label class="lb">Cargo:</label>
@@ -71,12 +71,12 @@
                     else
                     {
                     ?>
-                        <div class="topo">
-                            Departamentos cadastradas
+                        <div id="topo">
+                            Cargos Cadastrados
                         </div>
-                        <div class ="conteudo">
+                        <div id="conteudo">
                             <form method="get" action="">
-                            <table>
+                                <table align="center">
                                 <tr>
                                     <td>
                                         <label class="lb">Cargo:</label>

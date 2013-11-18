@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoUnidade.css">
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCad.css"/>
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -11,13 +11,12 @@
                 require 'Logado.php';
                 require 'Menu.php';
             ?>
-            <div class="topo">
-                Cadastrar Novo Protocolo
+            <div id="topo">
+                Novo Protocolo
             </div>
-            <form method="post" action="Insercao.php">
-                <div class="logar">
+            <div id="conteudo">
+                <form method="post" action="Insercao.php">
                     <input type="hidden" name="Inserir" value="PROTOCOLO"/>
-                    <label class="lb">Número:</label>
                     <?php
                         require 'Conexao.php';
                         if($_SESSION['Conexao'] == 'Sim')
@@ -30,12 +29,39 @@
                             }
                         }
                     ?>
-                    <input type="text" name="txtnumero" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Número do protocolo."/>
-                    <label class="lb">Data:</label>
-                    <input type="text" name="txtdata" class="txt" title="Digite a data de recebimento."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
-                </div>
-            </form>
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="lb">Número:</label>
+                   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                 <input type="text" name="txtnumero" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Número do protocolo."/>
+                    
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lb">Data:</label>
+                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtdata" class="txt" title="Digite a data de recebimento."/>
+                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>    
+            </div>
         </div>
     </body>
 </html>

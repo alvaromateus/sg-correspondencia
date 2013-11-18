@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoUnidade.css">
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCad.css"/>
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -11,13 +11,12 @@
                 require 'Logado.php';
                 require 'Menu.php';
             ?>
-            <div class="topo">
+            <div id="topo">
                 Cadastro de Novo Serviço
             </div>
-            <form method="post" action="Insercao.php">
-                <div class="logar">
+            <div id="conteudo">
+                <form method="post" action="Insercao.php">
                     <input type="hidden" name="Inserir" value="SERVICO"/>
-                    <label class="lb">Código:</label>
                     <?php
                         require 'Conexao.php';
                         if($_SESSION['Conexao'] == 'Sim')
@@ -30,12 +29,37 @@
                             }
                         }
                     ?>
-                    <input type="text" name="txtcodigo" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Código endereço."/>
-                    <label class="lb">Serviço:</label>
-                    <input type="text" name="txtservico" class="txt" title="Digite o tipo do serviço."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
-                </div>
-            </form>
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="lb">Código:</label>
+                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtcodigo" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Código endereço."/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                 <label class="lb">Serviço:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtservico" class="txt" title="Digite o tipo do serviço."/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </form>
+            </div>
         </div>
     </body>
 </html>

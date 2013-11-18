@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoUnidade.css">
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCad.css"/>
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -11,13 +11,12 @@
                 require 'Logado.php';
                 require 'Menu.php';
             ?>
-            <div class="topo">
-                Cadastro de Novo Funcionário
+            <div id="topo">
+                Novo Funcionário
             </div>
-            <div class="logar">
+            <div id="conteudo">
                 <form method="post" action="Insercao.php">
                     <input type="hidden" name="Inserir" value="FUNCIONARIO"/>
-                    <label class="lb">Registro:</label>
                     <?php
                         require 'Conexao.php';
                         if($_SESSION['Conexao'] == 'Sim')
@@ -30,18 +29,73 @@
                             }
                         }
                     ?>
-                    <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Digite o registro."/>
-                    <label class="lb">Nome:</label>
-                    <input type="text" name="txtnome" class="txt" title="Digite o nome."/>
-                    <label class="lb">Ramal:</label>
-                    <input type="text" name="txtramal" class="txt" title="Digite o ramal."/>
-                    <label class="lb">Unidade:</label>
-                    <input type="text" name="txtunidade" class="txt" title="Digite a unidade."/>
-                    <label class="lb">Departamento:</label>
-                    <input type="text" name="txtdepartamento" class="txt" title="Digite o departamento."/>
-                    <label class="lb">Cargo:</label>
-                    <input type="text" name="txtcargo" class="txt" title="Digite o cargo."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="lb">Registro:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Digite o registro."/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lb">Nome:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtnome" class="txt" title="Digite o nome."/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lb">Ramal:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtramal" class="txt" title="Digite o ramal."/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lb">Unidade:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtunidade" class="txt" title="Digite a unidade."/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lb">Departamento:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtdepartamento" class="txt" title="Digite o departamento."/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="lb">Cargo:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtcargo" class="txt" title="Digite o cargo."/>                   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
+                            </td>
+                        </tr>
+                    </table>
                 </form>
             </div>
         </div>
