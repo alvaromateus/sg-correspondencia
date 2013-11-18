@@ -10,21 +10,8 @@
             <?php
                 require 'Logado.php';
                 require 'Menu.php';
-            if ($_GET['Malote'] == 1)
-            {
             ?>
-                <div class="topo">
-                    Malote efetuado com sucesso!
-                </div>
-                <div class="logar">
-                    <a onclick="" class="bt" href="CadMalote.php?Malote=0" title="Novo Cadastro de Malote.">Novo</a>
-                </div>
-            <?php
-            }
-            else
-            {
-            ?>
-                <div class="topo">
+             <div class="topo">
                     Cadastro de Novo Malote
                 </div>
                 <form method="post" action="Insercao.php">
@@ -56,8 +43,5 @@
                 </div>
             </form>
         </div>
-        <?php
-            }
-        ?>
     </body>
 </html>
