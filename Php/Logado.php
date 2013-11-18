@@ -22,7 +22,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="#" class="menupessoal">Configurações</a>
+                        <a href="ConfiLogado.php" class="menupessoal">Configurações</a>
                     </td>
                     <td>
                         <a href="ConexaoEncerrar.php" class="menupessoal">Sair</a>

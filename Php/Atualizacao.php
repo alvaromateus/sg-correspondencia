@@ -165,5 +165,55 @@
             oci_free_statement($sql);
             echo "<script>alert('Dados atualizado com sucesso.'); window.location='ConServico.php'</script>";
         }
+        if($_POST['Atualizar'] == "PROPRIO")
+        {
+            $cregistro = $_POST['txtregistro'];
+            $cfuncionario = $_POST['txtfuncionario'];
+            $cramal = $_POST['txtramal'];
+            $dep = $_POST['txtdepartamento'];
+            $uni = $_POST['txtunidade'];
+            $car = $_POST['txtcargo'];
+            $cusuario = $_POST['txtusuario'];
+            $csenha = $_POST['txtsenha'];
+            $select = oci_parse($conexao, 'SELECT nm_senha FROM Usuario WHERE cd_registro ='.$cregistro);
+            oci_execute($select, OCI_DEFAULT);
+            $row = oci_fetch_array($select);
+            if($row[0] != $csenha)
+            {
+                $csenha = md5($csenha);
+            }
+            oci_free_statement($select);
+            $sqlu = oci_parse($conexao, "SELECT cd_unidade FROM Unidade WHERE nm_unidade = '".$uni."'");
+            oci_execute($sqlu, OCI_DEFAULT);
+            $row = oci_fetch_array($sqlu);
+            $cunidade = $row[0];
+            oci_free_statement($sqlu);
+            $sqld = oci_parse($conexao, "SELECT cd_departamento FROM Departamento WHERE nm_departamento = '".$dep."'");
+            oci_execute($sqld, OCI_DEFAULT);
+            $row = oci_fetch_array($sqld);
+            $cdepartamento = $row[0];
+            oci_free_statement($sqld);
+            $sqlc = oci_parse($conexao, "SELECT cd_cargo FROM Cargo WHERE nm_cargo = '".$car."'");
+            oci_execute($sqlc, OCI_DEFAULT);
+            $row = oci_fetch_array($sqlc);
+            $ccargo = $row[0];
+            oci_free_statement($sqlc);
+            $sql = oci_parse($conexao, 'UPDATE Usuario SET nm_usuario = :usuario, nm_senha = :senha WHERE cd_registro = :registro');
+            oci_bind_by_name($sql, ':registro', $cregistro);
+            oci_bind_by_name($sql, ':usuario', $cusuario);
+            oci_bind_by_name($sql, ':senha', $csenha);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            $sql = oci_parse($conexao, 'UPDATE Funcionario SET nm_funcionario = :funcionario, cd_ramal = :ramal, cd_unidade = :unidade, cd_departamento = :departamento, cd_cargo = :cargo WHERE cd_registro = :registro');
+            oci_bind_by_name($sql, ':registro', $cregistro);
+            oci_bind_by_name($sql, ':funcionario', $cfuncionario);
+            oci_bind_by_name($sql, ':ramal', $cramal);
+            oci_bind_by_name($sql, ':unidade', $cunidade);
+            oci_bind_by_name($sql, ':departamento', $cdepartamento);
+            oci_bind_by_name($sql, ':cargo', $ccargo);
+            oci_execute($sql);
+            oci_free_statement($sql);
+            echo "<script>alert('Dados atualizado com sucesso.'); window.location='Home.php'</script>";
+        }
     }
 ?>

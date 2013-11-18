@@ -22,9 +22,8 @@
                             $confirmacao = $_GET['I'];
                             $del = oci_parse($conexao, "DELETE FROM Malote WHERE cd_malote =".$confirmacao);
                             oci_execute($del, OCI_COMMIT_ON_SUCCESS);
-                            oci_commit($del);
                             oci_free_statement($del);
-                            echo "<script>alert('Dados excluídos com sucesso.'); window.location='ConCargo.php'</script>";
+                            echo "<script>alert('Dados excluídos com sucesso.'); window.location='ConMalote.php'</script>";
                         ?>
                     <?php
                     }

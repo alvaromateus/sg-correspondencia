@@ -143,7 +143,7 @@
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='CadUsuario.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='ConFuncionario.php' class='bt1'>Novo Cadastro - Verifique se funcionário é cadastrado</a>
                                     </td>
                                 </tr>
                             </table>
