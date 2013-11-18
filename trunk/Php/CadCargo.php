@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoUnidade.css">
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCad.css"/>
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -11,12 +11,13 @@
                 require 'Logado.php';
                 require 'Menu.php';
             ?>
-            <div class="topo">
-                Cadastro de Novo Cargo
+            <div id="topo">
+                Novo Cargo
             </div>
-            <form method="post" action="Insercao.php">
+            <div id="conteudo">
+                <form method="post" action="Insercao.php">
                 <input type="hidden" name="Inserir" value="CARGO"/>
-                <?php
+                    <?php
                     require 'Conexao.php';
                     if($_SESSION['Conexao'] == 'Sim')
                     {
@@ -27,15 +28,28 @@
                             $registro = $row[0];
                         }
                     }
-                ?>
-                <div class="logar">
-                    <input type="hidden" name="txtregistro" value='<?php echo $registro ?>'/>
-                    <label class="lb">Cargo:</label>
-                    <input type="text" name="txtcargo" class="txt" title="Digite o cargo."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." />
-                </div>
-            </form>
-        </div>
+                    ?>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="txtregistro" value='<?php echo $registro ?>'/>
+                                <label class="lb">Cargo:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="txtcargo" class="txt" title="Digite o cargo."/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." />
+                            </td>
+                        </tr>
+                    </table>
+              </form>    
+            </div>
+         </div>
     </body>
 </html>
 

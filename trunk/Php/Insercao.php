@@ -1,5 +1,7 @@
 <?php
     require 'Conexao.php';
+    require 'Logado.php';
+    require 'Menu.php';
     if($_SESSION['Conexao'] == 'Sim')
     {
         if($_POST['Inserir'] == "FUNCIONARIO")

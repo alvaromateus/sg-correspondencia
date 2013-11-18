@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoUnidade.css">
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCad.css"/>
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -11,14 +11,13 @@
                 require 'Logado.php';
                 require 'Menu.php';
             ?>
-            <div class="topo">
-                Cadastro de Nova Correspondência
+            <div id="topo">
+                Nova Correspondência
             </div>
-            <form method="post" action="Insercao.php">
+            <div id="conteudo">
+                <form method="post" action="Insercao.php">
                 <input type="hidden" name="Inserir" value="CORRESPONDENCIA"/>
-                <div class="logar">
-                    <label class="lb">Correspondência:</label>
-                    <?php
+                <?php
                     require 'Conexao.php';
                     if($_SESSION['Conexao'] == 'Sim')
                     {
@@ -30,24 +29,87 @@
                         }
                     }
                     oci_free_statement($stmt);
-                    ?>
-                    <input type="text" name="txtnumero" class="txt" value='<?php echo $registro ?>' title="Digite o número da correspôndencia."/>
-                    <label class="lb">Tipo:</label>
-                    <input type="text" name="txttipo" class="txt" title="Digite o tipo."/>
-                    <label class="lb">Tamanho:</label>
-                    <input type="text" name="txttamanho" class="txt" title="Digite o tamanho."/>
-                    <label class="lb">Remetente:</label>
-                    <input type="text" name="txtremetente" class="txt" title="Digite o remetente."/>
-                    <label class="lb">Destinatário:</label>
-                    <input type="text" name="txtdestinatario" class="txt" title="Digite o destinatário."/>
-                    <label class="lb">Malote:</label>
-                    <input type="text" name="txtmalote" class="txt" title="Digite o malote."/>
-                    <label class="lb">Protocolo:</label>
-                    <input type="text" name="txtprotocolo" class="txt" title="Digite o protocolo."/>
-                    <input type="hidden" name="txtusuario" value='<?php session_start(); echo $_SESSION['Registro'];?>'/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
-                </div>
-            </form>
+                ?>    
+                <table>
+                    <tr>
+                        <td>
+                            <label class="lb">Correspondência:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtnumero" class="txt" value='<?php echo $registro ?>' title="Digite o número da correspôndencia."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lb">Tipo:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txttipo" class="txt" title="Digite o tipo."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lb">Tamanho:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txttamanho" class="txt" title="Digite o tamanho."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lb">Remetente:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtremetente" class="txt" title="Digite o remetente."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lb">Destinatário:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtdestinatario" class="txt" title="Digite o destinatário."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lb">Malote:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtmalote" class="txt" title="Digite o malote."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lb">Protocolo:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtprotocolo" class="txt" title="Digite o protocolo."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="hidden" name="txtusuario" value='<?php session_start(); echo $_SESSION['Registro'];?>'/>
+                            <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar."/>
+                        </td>
+                    </tr>
+                </table> 
+                </form>
+            </div>
         </div>
     </body>
 </html>

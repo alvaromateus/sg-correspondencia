@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoUnidade.css">
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCad.css"/>
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -11,37 +11,83 @@
                 require 'Logado.php';
                 require 'Menu.php';
             ?>
-             <div class="topo">
-                    Cadastro de Novo Malote
-                </div>
+             <div id="topo">
+                    Novo Malote
+             </div>
+             <div id="conteudo">
                 <form method="post" action="Insercao.php">
-                <div class="logar">
-                    <input type="hidden" name="Inserir" value="MALOTE"/>
-                    <label class="lb">Número:</label>
-                    <?php
-                        require 'Conexao.php';
-                        if($_SESSION['Conexao'] == 'Sim')
+                <input type="hidden" name="Inserir" value="MALOTE"/>
+                <?php
+                    require 'Conexao.php';
+                    if($_SESSION['Conexao'] == 'Sim')
+                    {
+                        $stmt = oci_parse($conexao, "SELECT sq_malote.nextval FROM Dual");
+                        oci_execute($stmt, OCI_DEFAULT);
+                        while($row = oci_fetch_array($stmt))
                         {
-                            $stmt = oci_parse($conexao, "SELECT sq_malote.nextval FROM Dual");
-                            oci_execute($stmt, OCI_DEFAULT);
-                            while($row = oci_fetch_array($stmt))
-                            {
-                                $registro = $row[0];
-                            }
+                            $registro = $row[0];
                         }
-                    ?>
-                    <input type="text" name="txtnumero" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Número do malote." />
-                    <label class="lb">Origem:</label>
-                    <input type="text" name="txtorigem" class="txt" title="Digite o origem."/>
-                    <label class="lb">Destino:</label>
-                    <input type="text" name="txtdestino" class="txt" title="Digite o destino."/>
-                    <label class="lb">Data:</label>
-                    <input type="text" name="txtdata" class="txt" title="Digite a data."/>
-                    <label class="lb">Servico:</label>
-                    <input type="text" name="txtservico" class="txt" title="Digite o tipo de serviço."/>
-                    <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." />
-                </div>
+                    }
+                ?>
+                <table>
+                    <tr>
+                        <td>
+                            <label class="lb">Número:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <input type="text" name="txtnumero" class="txt" readonly="readonly" value='<?php echo $registro ?>' title="Número do malote." />
+                       </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lb">Origem:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtorigem" class="txt" title="Digite o origem."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                              <label class="lb">Destino:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtdestino" class="txt" title="Digite o destino."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <label class="lb">Data:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtdata" class="txt" title="Digite a data."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="lb">Servico:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="txtservico" class="txt" title="Digite o tipo de serviço."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Salvar" name="btsalvar" class="bt" title="Clique para salvar." />
+                        </td>
+                    </tr>
+                </table>
             </form>
+            </div>
         </div>
     </body>
 </html>
