@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/.css" />
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCon.css" />
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -31,10 +31,10 @@
                     else if(isset($_GET['Atualizar']))
                     {
                     ?>
-                        <div class="topo">
+                        <div id="topo">
                             Atualizar Cadastro de Usuário
                         </div>
-                        <div class="conteudo">
+                        <div id="conteudo">
                             <form method="post" action="Atualizacao.php">
                                 <input type="hidden" name="Atualizar" value="UNIDADE"/>
                                  <table>
@@ -104,27 +104,27 @@
                     else
                     {
                     ?>
-                        <div class="topo">
+                        <div id="topo">
                             Unidades cadastradas
                         </div>
-                        <div class ="conteudo">
+                        <div id="conteudo">
                             <form method="get" action="">
                             <table>
                                 <tr>
                                     <td>
-                                        <label class="lb">Unidade:</label>
+                                        <label class="lb1">Unidade:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Endereço:</label>
+                                        <label class="lb3">Endereço:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">CEP:</label>
+                                        <label class="lb1">CEP:</label>
                                     </td>
                                     <td>
                                         <label class="lb">Cidade:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Estado:</label>
+                                        <label class="lb2">Estado:</label>
                                     </td>
                                     <td>
                                         <label class="lb">Telefone:</label>
@@ -143,28 +143,28 @@
                                 ?>
                                 <tr>                              
                                     <td>
-                                        <input type="text" name="txtunidade" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_UNIDADE") ?>'/>
+                                        <input type="text" name="txtunidade" class="txt1" readonly="readonly" value='<?php echo ociresult($stmt, "NM_UNIDADE") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtendereco" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_ENDERECO_COMPLETO") ?>'/>
+                                        <input type="text" name="txtendereco" class="txt3" readonly="readonly" value='<?php echo ociresult($stmt, "NM_ENDERECO_COMPLETO") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtcep" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_CEP") ?>'/>
+                                        <input type="text" name="txtcep" class="txt1" readonly="readonly" value='<?php echo ociresult($stmt, "CD_CEP") ?>'/>
                                     </td>
                                     <td>
                                         <input type="text" name="txtcidade" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CIDADE") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtestado" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "SG_ESTADO") ?>'/>
+                                        <input type="text" name="txtestado" class="txt2" readonly="readonly" value='<?php echo ociresult($stmt, "SG_ESTADO") ?>'/>
                                     </td>
                                     <td>
                                         <input type="text" name="txttelefone" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_TELEFONE") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConUnidade.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                        <?php echo "<a href='ConUnidade.php?Atualizar&I=$id' class='bt'>Atualizar</a>"; ?>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConUnidade.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                        <?php echo "<a href='ConUnidade.php?Excluir&I=$id' class='bt'>Excluir</a>"; ?>
                                     </td>
                                  </tr>
                             <?php
@@ -172,7 +172,7 @@
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='CadUnidade.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='CadUnidade.php' class='bt'>Novo Cadastro</a>
                                     </td>
                                 </tr>
                             </table>

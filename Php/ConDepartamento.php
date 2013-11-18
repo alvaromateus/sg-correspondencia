@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/.css" />
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCon.css" />
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -31,10 +31,10 @@
                     else if(isset($_GET['Atualizar']))
                     {
                     ?>
-                        <div class="topo">
+                        <div id="topo">
                             Atualizar Cadastro de Departamentos
                         </div>
-                        <div class="conteudo">
+                        <div id="conteudo">
                             <form method="post" action="Atualizacao.php">
                                 <input type="hidden" name="Atualizar" value="DEPARTAMENTO"/>
                                  <table>
@@ -71,10 +71,10 @@
                     else
                     {
                     ?>
-                        <div class="topo">
+                        <div id="topo">
                             Departamentos cadastradas
                         </div>
-                        <div class ="conteudo">
+                        <div id="conteudo">
                             <form method="get" action="">
                             <table>
                                 <tr>
@@ -98,10 +98,10 @@
                                         <input type="text" name="txtdepartamento" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_DEPARTAMENTO") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConDepartamento.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                        <?php echo "<a href='ConDepartamento.php?Atualizar&I=$id' class='bt'>Atualizar</a>"; ?>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConDepartamento.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                        <?php echo "<a href='ConDepartamento.php?Excluir&I=$id' class='bt'>Excluir</a>"; ?>
                                     </td>
                                  </tr>
                             <?php
@@ -109,7 +109,7 @@
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='CadDepartamento.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='CadDepartamento.php' class='bt'>Novo Cadastro</a>
                                     </td>
                                 </tr>
                             </table>

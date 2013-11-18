@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/Formatac.css"/>
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCon.css"/>
         <title>.: Consultar Usuário :.</title>
     </head>
     <body>
@@ -27,10 +27,10 @@
                     else if(isset($_GET['Atualizar']))
                     {
                     ?>
-                        <div class="topo">
+                        <div id="topo">
                             Atualizar Cadastro de Usuário
                         </div>
-                        <div class="conteudo">
+                        <div id="conteudo">
                             <form method="post" action="Atualizacao.php">
                                 <input type="hidden" name="Atualizar" value="USUARIO"/>
                                 <table>
@@ -87,10 +87,10 @@
                     else
                     {
                     ?>
-                        <div class="topo">
+                        <div id="topo">
                             Usuários cadastrados
                         </div>
-                        <div class ="conteudo">
+                        <div id="conteudo">
                             <form method="get" action="">
                             <table>
                                     <tr>
@@ -132,10 +132,10 @@
                                             <input type="text" name="txtacesso" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_ACESSO") ?>'/>
                                         </td>
                                         <td>
-                                            <?php echo "<a href='ConUsuario.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                            <?php echo "<a href='ConUsuario.php?Atualizar&I=$id' class='bt'>Atualizar</a>"; ?>
                                         </td>
                                         <td>
-                                            <?php echo "<a href='ConUsuario.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                            <?php echo "<a href='ConUsuario.php?Excluir&I=$id' class='bt'>Excluir</a>"; ?>
                                         </td>
                                     </tr>
                                 <?php
@@ -143,7 +143,7 @@
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='ConFuncionario.php' class='bt1'>Novo Cadastro - Verifique se funcionário é cadastrado</a>
+                                        <a href='ConFuncionario.php' class='bt'>Novo Cadastro - Verifique se funcionário é cadastrado</a>
                                     </td>
                                 </tr>
                             </table>

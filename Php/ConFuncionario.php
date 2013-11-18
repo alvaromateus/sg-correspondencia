@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/.css" />
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCon.css" />
         <title>.: Consultar Usuário :.</title>
     </head>
     <body>
@@ -31,22 +31,22 @@
                     else if(isset($_GET['Atualizar']))
                     {
                     ?>
-                        <div class="topo">
-                            Atualizar Cadastro de Usuário
+                        <div id="topo">
+                            Atualizar Cadastro Funcionário
                         </div>
-                        <div class="conteudo">
+                        <div id="conteudo">
                             <form method="post" action="Atualizacao.php">
                                 <input type="hidden" name="Atualizar" value="FUNCIONARIO"/>
                                  <table>
                                 <tr>
                                     <td>
-                                        <label class="lb">Registro:</label>
+                                        <label class="lb2">Registro:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Funcionário:</label>
+                                        <label class="lb3">Funcionário:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Ramal:</label>
+                                        <label class="lb2">Ramal:</label>
                                     </td>
                                     <td>
                                         <label class="lb">Unidade:</label>
@@ -55,10 +55,7 @@
                                         <label class="lb">Departamento:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Cargo:</label>
-                                    </td>
-                                    <td>
-                                        <label class="lb">Configuração:</label>
+                                        <label class="lb1">Cargo:</label>
                                     </td>
                                 </tr>
                                 <?php
@@ -70,13 +67,13 @@
                                 ?>
                                     <tr>
                                         <td>
-                                            <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
+                                            <input type="text" name="txtregistro" class="txt2" readonly="readonly" value='<?php echo $id ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtfuncionario" class="txt" value='<?php echo ociresult($select, "NM_FUNCIONARIO") ?>'/>
+                                            <input type="text" name="txtfuncionario" class="txt3" value='<?php echo ociresult($select, "NM_FUNCIONARIO") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtramal" class="txt" value='<?php echo ociresult($select, "CD_RAMAL") ?>'/>
+                                            <input type="text" name="txtramal" class="txt2" value='<?php echo ociresult($select, "CD_RAMAL") ?>'/>
                                         </td>
                                         <td>
                                             <input type="text" name="txtunidade" class="txt" value='<?php echo ociresult($select, "NM_UNIDADE") ?>'/>
@@ -85,7 +82,7 @@
                                             <input type="text" name="txtdepartamento" class="txt" value='<?php echo ociresult($select, "NM_DEPARTAMENTO") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtcargo" class="txt" value='<?php echo ociresult($select, "NM_CARGO") ?>'/>
+                                            <input type="text" name="txtcargo" class="txt1" value='<?php echo ociresult($select, "NM_CARGO") ?>'/>
                                         </td>
                                         <td>
                                             <input type="submit" value="Atualizar" name="btatualizar" class="bt" title="Clique para atualizar." />
@@ -103,21 +100,21 @@
                     else
                     {
                     ?>
-                        <div class="topo">
-                            Usuários cadastrados
+                        <div id="topo">
+                            Funcionários Cadastrados
                         </div>
-                        <div class ="conteudo">
+                        <div id="conteudo">
                             <form method="get" action="">
                             <table>
                                 <tr>
                                     <td>
-                                        <label class="lb">Registro:</label>
+                                        <label class="lb2">Registro:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Funcionário:</label>
+                                        <label class="lb3">Funcionário:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Ramal:</label>
+                                        <label class="lb2">Ramal:</label>
                                     </td>
                                     <td>
                                         <label class="lb">Unidade:</label>
@@ -126,7 +123,7 @@
                                         <label class="lb">Departamento:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Cargo:</label>
+                                        <label class="lb1">Cargo:</label>
                                     </td>
                                     <td colspan="3">
                                         <label class="lb">Configurações:</label>
@@ -142,13 +139,13 @@
                                 ?>
                                 <tr>                              
                                     <td>
-                                        <input type="text" name="txtregistro" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
+                                        <input type="text" name="txtregistro" class="txt2" readonly="readonly" value='<?php echo $id ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtfuncionario" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_FUNCIONARIO") ?>'/>
+                                        <input type="text" name="txtfuncionario" class="txt3" readonly="readonly" value='<?php echo ociresult($stmt, "NM_FUNCIONARIO") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtramal" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "CD_RAMAL") ?>'/>
+                                        <input type="text" name="txtramal" class="txt2" readonly="readonly" value='<?php echo ociresult($stmt, "CD_RAMAL") ?>'/>
                                     </td>
                                     <td>
                                         <input type="text" name="txtunidade" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_UNIDADE") ?>'/>
@@ -157,16 +154,16 @@
                                         <input type="text" name="txtdepartamento" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_DEPARTAMENTO") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtcargo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CARGO") ?>'/>
+                                        <input type="text" name="txtcargo" class="txt1" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CARGO") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConFuncionario.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                        <?php echo "<a href='ConFuncionario.php?Atualizar&I=$id' class='bt'>Atualizar</a>"; ?>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConFuncionario.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                        <?php echo "<a href='ConFuncionario.php?Excluir&I=$id' class='bt'>Excluir</a>"; ?>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='CadUsuario.php?I=$id' class='bt2'>Cad. Usuário</a>"; ?>
+                                        <?php echo "<a href='CadUsuario.php?I=$id' class='bt'>Cad. Usuário</a>"; ?>
                                     </td>
                                 </tr>
                             <?php
@@ -174,7 +171,7 @@
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='CadFuncionario.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='CadFuncionario.php' class='bt'>Novo Cadastro</a>
                                     </td>
                                 </tr>
                             </table>
