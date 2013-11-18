@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/.css" />
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCon.css" />
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -31,10 +31,10 @@
                     else if(isset($_GET['Atualizar']))
                     {
                     ?>
-                        <div class="topo">
+                        <div id="topo">
                             Atualizar Correspondência
                         </div>
-                        <div class="conteudo">
+                        <div id="conteudo">
                             <form method="post" action="Atualizacao.php">
                                 <input type="hidden" name="Atualizar" value="CORRESPONDENCIA"/>
                                  <table>
@@ -43,10 +43,10 @@
                                         <label class="lb">Correspondência:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Tipo:</label>
+                                        <label class="lb1">Tipo:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Tamanho:</label>
+                                        <label class="lb1">Tamanho:</label>
                                     </td>
                                     <td>
                                         <label class="lb">Remetente:</label>
@@ -55,10 +55,10 @@
                                         <label class="lb">Destinatário:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Malote:</label>
+                                        <label class="lb2">Malote:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Protocolo:</label>
+                                        <label class="lb1">Protocolo:</label>
                                     </td>
                                 </tr>
                                 <?php
@@ -70,13 +70,13 @@
                                 ?>
                                     <tr>                              
                                         <td>
-                                            <input type="text" name="txtregistro" value='<?php echo $id ?>'/>
+                                            <input type="text" name="txtregistro" class="txt" value='<?php echo $id ?>'/>
                                         </td>     
                                         <td>
-                                            <input type="text" name="txttipo" class="txt" value='<?php echo ociresult($select, "NM_TIPO") ?>'/>
+                                            <input type="text" name="txttipo" class="txt1" value='<?php echo ociresult($select, "NM_TIPO") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txttamanho" class="txt" value='<?php echo ociresult($select, "NM_TAMANHO") ?>'/>
+                                            <input type="text" name="txttamanho" class="txt1" value='<?php echo ociresult($select, "NM_TAMANHO") ?>'/>
                                         </td>
                                         <td>
                                             <input type="text" name="txtremetente" class="txt" value='<?php echo ociresult($select, "NM_REMETENTE") ?>'/>
@@ -85,10 +85,10 @@
                                             <input type="text" name="txtdestinatario" class="txt" value='<?php echo ociresult($select, "NM_DESTINATARIO") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtmalote" class="txt" value='<?php echo ociresult($select, "CD_MALOTE") ?>'/>
+                                            <input type="text" name="txtmalote" class="txt2" value='<?php echo ociresult($select, "CD_MALOTE") ?>'/>
                                         </td>
                                         <td>
-                                            <input type="text" name="txtprotocolo" class="txt" value='<?php echo ociresult($select, "CD_PROTOCOLO") ?>'/>
+                                            <input type="text" name="txtprotocolo" class="txt1" value='<?php echo ociresult($select, "CD_PROTOCOLO") ?>'/>
                                         </td>
                                         <td>
                                             <input type="submit" value="Atualizar" name="btatualizar" class="bt" title="Clique para atualizar." />
@@ -106,10 +106,10 @@
                     else
                     {
                     ?>
-                        <div class="topo">
+                        <div id="topo">
                             Correspondencias cadastradas
                         </div>
-                        <div class ="conteudo">
+                        <div id="conteudo">
                             <form method="get" action="">
                             <table>
                                 <tr>
@@ -117,10 +117,10 @@
                                         <label class="lb">Correspondência:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Tipo:</label>
+                                        <label class="lb1">Tipo:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Tamanho:</label>
+                                        <label class="lb1">Tamanho:</label>
                                     </td>
                                     <td>
                                         <label class="lb">Remetente:</label>
@@ -129,10 +129,10 @@
                                         <label class="lb">Destinatário:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Malote:</label>
+                                        <label class="lb2">Malote:</label>
                                     </td>
                                     <td>
-                                        <label class="lb">Protocolo:</label>
+                                        <label class="lb1">Protocolo:</label>
                                     </td>
                                     <td colspan="2">
                                         <label class="lb">Configurações:</label>
@@ -151,10 +151,10 @@
                                         <input type="text" name="txtcorrespondencia" readonly="readonly" class="txt" value='<?php echo $id ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txttipo" readonly="readonly" class="txt" value='<?php echo ociresult($stmt, "NM_TIPO") ?>'/>
+                                        <input type="text" name="txttipo" readonly="readonly" class="txt1" value='<?php echo ociresult($stmt, "NM_TIPO") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txttamanho" readonly="readonly" class="txt" value='<?php echo ociresult($stmt, "NM_TAMANHO") ?>'/>
+                                        <input type="text" name="txttamanho" readonly="readonly" class="txt1" value='<?php echo ociresult($stmt, "NM_TAMANHO") ?>'/>
                                     </td>
                                     <td>
                                         <input type="text" name="txtremetente" readonly="readonly" class="txt" value='<?php echo ociresult($stmt, "NM_REMETENTE") ?>'/>
@@ -163,16 +163,16 @@
                                         <input type="text" name="txtdestinatario" readonly="readonly" class="txt" value='<?php echo ociresult($stmt, "NM_DESTINATARIO") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtmalote" readonly="readonly" class="txt" value='<?php echo ociresult($stmt, "CD_MALOTE") ?>'/>
+                                        <input type="text" name="txtmalote" readonly="readonly" class="txt2" value='<?php echo ociresult($stmt, "CD_MALOTE") ?>'/>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtprotocolo" readonly="readonly" class="txt" value='<?php echo ociresult($stmt, "CD_PROTOCOLO") ?>'/>
+                                        <input type="text" name="txtprotocolo" readonly="readonly" class="txt1" value='<?php echo ociresult($stmt, "CD_PROTOCOLO") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConCorrespondencia.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                        <?php echo "<a href='ConCorrespondencia.php?Atualizar&I=$id' class='bt'>Atualizar</a>"; ?>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConCorrespondencia.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                        <?php echo "<a href='ConCorrespondencia.php?Excluir&I=$id' class='bt'>Excluir</a>"; ?>
                                     </td>
                                 </tr>
                             <?php
@@ -180,7 +180,7 @@
                             ?>
                                 <tr>
                                     <td colspan="9">
-                                        <a href='CadCorrespondencia.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='CadCorrespondencia.php' class='bt'>Novo Cadastro</a>
                                     </td>
                                 </tr>
                             </table>

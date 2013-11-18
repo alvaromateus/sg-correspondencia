@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoHome.css" />
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCon.css" />
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -98,10 +98,10 @@
                                         <input type="text" name="txtcargo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_CARGO") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConCargo.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                        <?php echo "<a href='ConCargo.php?Atualizar&I=$id' class='bt'>Atualizar</a>"; ?>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConCargo.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                        <?php echo "<a href='ConCargo.php?Excluir&I=$id' class='bt'>Excluir</a>"; ?>
                                     </td>
                                  </tr>
                             <?php
@@ -109,7 +109,7 @@
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='CadCargo.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='CadCargo.php' class='bt'>Novo Cadastro</a>
                                     </td>
                                 </tr>
                             </table>

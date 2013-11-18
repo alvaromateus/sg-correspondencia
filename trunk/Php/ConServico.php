@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../Formatação/.css" />
+        <link rel="stylesheet" type="text/css" href="../Formatação/FormatacaoCon.css" />
         <title>.: SG Correspondência :.</title>
     </head>
     <body>
@@ -31,10 +31,10 @@
                     else if(isset($_GET['Atualizar']))
                     {
                     ?>
-                        <div class="topo">
-                            Atualizar Cadastro de Malote
+                        <div id="topo">
+                            Atualizar Serviço
                         </div>
-                        <div class="conteudo">
+                        <div id="conteudo">
                             <form method="post" action="Atualizacao.php">
                                 <input type="hidden" name="Atualizar" value="SERVICO"/>
                                  <table>
@@ -55,7 +55,7 @@
                                 ?>
                                     <tr>                              
                                         <td>
-                                            <input type="text" name="txtservico" readonly="readonly" value='<?php echo $id ?>'/>
+                                            <input type="text" name="txtservico" class="txt" readonly="readonly" value='<?php echo $id ?>'/>
                                         </td>
                                         <td>
                                             <input type="text" name="txttipo" class="txt" value='<?php echo ociresult($select, "NM_TIPO") ?>'/>
@@ -76,10 +76,10 @@
                     else
                     {
                     ?>
-                        <div class="topo">
-                            Malotes cadastrados
+                        <div id="topo">
+                            Serviços Cadastrados
                         </div>
-                        <div class ="conteudo">
+                        <div id="conteudo">
                             <form method="get" action="">
                             <table>
                                 <tr>
@@ -109,10 +109,10 @@
                                         <input type="text" name="txttipo" class="txt" readonly="readonly" value='<?php echo ociresult($stmt, "NM_TIPO") ?>'/>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConServico.php?Atualizar&I=$id' class='bt1'>Atualizar</a>"; ?>
+                                        <?php echo "<a href='ConServico.php?Atualizar&I=$id' class='bt'>Atualizar</a>"; ?>
                                     </td>
                                     <td>
-                                        <?php echo "<a href='ConServico.php?Excluir&I=$id' class='bt2'>Excluir</a>"; ?>
+                                        <?php echo "<a href='ConServico.php?Excluir&I=$id' class='bt'>Excluir</a>"; ?>
                                     </td>
                                  </tr>
                             <?php
@@ -120,7 +120,7 @@
                             ?>
                                 <tr>
                                     <td colspan="8">
-                                        <a href='CadServico.php' class='bt1'>Novo Cadastro</a>
+                                        <a href='CadServico.php' class='bt'>Novo Cadastro</a>
                                     </td>
                                 </tr>
                             </table>
