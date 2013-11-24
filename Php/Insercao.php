@@ -92,7 +92,6 @@
         }
         if($_POST['Inserir'] == "CORRESPONDENCIA")
         {
-            session_start();
             $sql = oci_parse($conexao, 'INSERT INTO Correspondencia (cd_correspondencia, nm_tipo, nm_tamanho, nm_remetente, nm_destinatario, cd_malote, cd_protocolo, cd_registro) VALUES (:correspondencia, :tipo, :tamanho, :remetente, :destinatario, :malote, :protocolo, :usuario)');
             $cregistro = $_POST['txtnumero'];
             $ctipo = $_POST['txttipo'];
