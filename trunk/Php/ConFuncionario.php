@@ -162,10 +162,15 @@
                                     <td>
                                         <?php echo "<a href='ConFuncionario.php?Excluir&I=$id' class='bt'>Excluir</a>"; ?>
                                     </td>
-                                    <td>
-                                        <?php echo "<a href='CadUsuario.php?I=$id' class='bt'>Cad. Usuário</a>"; ?>
-                                    </td>
-                                </tr>
+                                        <td>
+                                        <?php
+                                            if($_SESSION['Nivel'] == 0)
+                                            {
+                                                echo "<a href='CadUsuario.php?I=$id' class='bt'>Cad. Usuário</a>";
+                                            }
+                                        ?>
+                                        </td>
+                                    </tr>
                             <?php
                             }
                             ?>
