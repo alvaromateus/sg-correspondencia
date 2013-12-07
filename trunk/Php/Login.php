@@ -39,6 +39,18 @@
             </div>
         </form>
         <?php
+            if(isset($_GET['ErroLogar']))
+            {
+            ?>
+                <div class="mensagem">
+                    <p>
+                        <?php
+                            echo  'É necessário está conectado para acessar o sistema.';
+                        ?>
+                    </p>
+                </div>
+            <?php
+            }
             //Se usuário ou senha inválidos, mostra a mensagem.
             if(isset($_GET['ErroLogin']))
             {

@@ -69,7 +69,7 @@
             $ccidade = $_POST['txtcidade'];
             $cestado = $_POST['txtestado'];
             $ctelefone = $_POST['txttelefone'];
-            $sql = oci_parse($conexao, 'UPDATE Unidade SET nm_unidade = :unidade, nm_cidade = :cidade, sg_estado = :estado, nm_endereco_completo = :endereco, cd_cep = :cep, cd_telefone = :telefone WHERE cd_unidade = :registro');
+            $sql = oci_parse($conexao, "UPDATE Unidade SET nm_unidade = :unidade, nm_cidade = addslashes(:cidade), sg_estado = :estado, nm_endereco_completo = :endereco, cd_cep = :cep, cd_telefone = :telefone WHERE cd_unidade = :registro");
             oci_bind_by_name($sql, ':registro', $cregistro);
             oci_bind_by_name($sql, ':unidade', $cunidade);
             oci_bind_by_name($sql, ':endereco', $cendereco);
