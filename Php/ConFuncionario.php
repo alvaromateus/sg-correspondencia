@@ -14,7 +14,7 @@
                 if (isset($_SESSION['Usuario']))
                 {
                     if($_SESSION['Conexao'] == 'Sim')
-                {
+                    {
                     //Exclusão faz esse bloco.
                     if(isset($_GET['Excluir']))
                     {
