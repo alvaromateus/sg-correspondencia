@@ -10,11 +10,21 @@
             <?php
                 require 'Logado.php';
                 require 'Menu.php';
+                require 'Conexao.php';
+                if (isset($_SESSION['Usuario']))
+                {
             ?>
             <div id="Conteudo">
                 <h1>Sistema de Gerenciamento de Correspondência</h1>
                 <h1>SGC</h1>
             </div>
+            <?php
+            }
+            else
+            {
+                header('Location: Login.php?ErroLogar');
+            }
+            ?>
         </div>
     </body>
 </html>
