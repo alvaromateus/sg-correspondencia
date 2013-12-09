@@ -168,13 +168,25 @@
                                         <?php
                                             if($_SESSION['Nivel'] == 0)
                                             {
-                                                echo "<a href='CadUsuario.php?I=$id' class='bt'>Cad. Usuário</a>";
+                                                $stmt = oci_parse($conexao, "SELECT cd_registro FROM Usuario WHERE cd_registro = ".$id);
+                                                oci_execute($stmt, OCI_DEFAULT);
+                                                $row = oci_fetch_array($stmt);
+                                                if($row > 0)
+                                                {
+                                                    echo "<a href='ConUsuario.php?Atualizar&I=$id' class='bt'>Alt. Usuário</a>";
+                                                }
+                                                else
+                                                {
+                                                    echo "<a href='CadUsuario.php?I=$id' class='bt'>Cad. Usuário</a>";
+                                                }
                                             }
                                         ?>
                                         </td>
                                     </tr>
                             <?php
                             }
+                            if($_SESSION['Nivel'] == 0)
+                            {
                             ?>
                                 <tr>
                                     <td colspan="8">
@@ -187,6 +199,7 @@
                         <?php
                         oci_free_statement($stmt);
                      }
+                    }
                     }
                 }
                 else
