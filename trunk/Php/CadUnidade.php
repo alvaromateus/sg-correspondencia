@@ -10,6 +10,9 @@
             <?php
                 require 'Logado.php';
                 require 'Menu.php';
+                require 'Conexao.php';
+                if (isset($_SESSION['Usuario']))
+                {
             ?>
             <div id="topo">
                 Nova Unidade
@@ -99,6 +102,13 @@
                     </table>
                 </form>
             </div>
+            <?php
+            }
+            else
+            {
+                header('Location: Login.php?ErroLogar');
+            }
+            ?>
         </div>
     </body>
 </html>
